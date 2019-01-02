@@ -12,6 +12,44 @@
 		84594F0D21DC68AB0019C9B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84594F0B21DC68AB0019C9B9 /* Main.storyboard */; };
 		84594F0F21DC68AC0019C9B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84594F0E21DC68AC0019C9B9 /* Assets.xcassets */; };
 		84594F1221DC68AC0019C9B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84594F1021DC68AC0019C9B9 /* LaunchScreen.storyboard */; };
+		84594F1F21DC6A8E0019C9B9 /* PCMainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F1E21DC6A8E0019C9B9 /* PCMainModel.swift */; };
+		84594F5C21DC6BFE0019C9B9 /* animacionCalendario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F2721DC6BFD0019C9B9 /* animacionCalendario.swift */; };
+		84594F5D21DC6BFE0019C9B9 /* accionesAnual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F2921DC6BFD0019C9B9 /* accionesAnual.swift */; };
+		84594F5E21DC6BFE0019C9B9 /* dataModelAnual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F2A21DC6BFD0019C9B9 /* dataModelAnual.swift */; };
+		84594F5F21DC6BFE0019C9B9 /* pricipalAnual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F2B21DC6BFD0019C9B9 /* pricipalAnual.swift */; };
+		84594F6021DC6BFE0019C9B9 /* botonRedondo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84594F2D21DC6BFD0019C9B9 /* botonRedondo.png */; };
+		84594F6121DC6BFE0019C9B9 /* calendario3_3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F2E21DC6BFD0019C9B9 /* calendario3_3.swift */; };
+		84594F6221DC6BFE0019C9B9 /* dataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F2F21DC6BFD0019C9B9 /* dataModel.swift */; };
+		84594F6321DC6BFE0019C9B9 /* accionesDiario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F3121DC6BFD0019C9B9 /* accionesDiario.swift */; };
+		84594F6421DC6BFE0019C9B9 /* dataModelDiario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F3221DC6BFD0019C9B9 /* dataModelDiario.swift */; };
+		84594F6521DC6BFE0019C9B9 /* dibujosDiario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F3321DC6BFD0019C9B9 /* dibujosDiario.swift */; };
+		84594F6621DC6BFE0019C9B9 /* principalDiario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F3421DC6BFD0019C9B9 /* principalDiario.swift */; };
+		84594F6721DC6BFE0019C9B9 /* updateDiario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F3521DC6BFD0019C9B9 /* updateDiario.swift */; };
+		84594F6821DC6BFE0019C9B9 /* accionesMensual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F3721DC6BFD0019C9B9 /* accionesMensual.swift */; };
+		84594F6921DC6BFE0019C9B9 /* dataModelMensual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F3821DC6BFD0019C9B9 /* dataModelMensual.swift */; };
+		84594F6A21DC6BFE0019C9B9 /* dibujosMensual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F3921DC6BFD0019C9B9 /* dibujosMensual.swift */; };
+		84594F6B21DC6BFE0019C9B9 /* principalMensual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F3A21DC6BFD0019C9B9 /* principalMensual.swift */; };
+		84594F6C21DC6BFE0019C9B9 /* updateMensual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F3B21DC6BFD0019C9B9 /* updateMensual.swift */; };
+		84594F6D21DC6BFE0019C9B9 /* titulos methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F3C21DC6BFD0019C9B9 /* titulos methods.swift */; };
+		84594F6E21DC6BFE0019C9B9 /* SETableViewCellDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F3F21DC6BFD0019C9B9 /* SETableViewCellDate.swift */; };
+		84594F6F21DC6BFE0019C9B9 /* SETableViewCellDate.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84594F4021DC6BFD0019C9B9 /* SETableViewCellDate.xib */; };
+		84594F7021DC6BFE0019C9B9 /* SETableViewCellOptionalDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F4221DC6BFD0019C9B9 /* SETableViewCellOptionalDate.swift */; };
+		84594F7121DC6BFE0019C9B9 /* SETableViewCellOptionalDate.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84594F4321DC6BFD0019C9B9 /* SETableViewCellOptionalDate.xib */; };
+		84594F7221DC6BFE0019C9B9 /* SETableViewCellSingleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F4521DC6BFD0019C9B9 /* SETableViewCellSingleLabel.swift */; };
+		84594F7321DC6BFE0019C9B9 /* SETableViewCellSingleLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84594F4621DC6BFD0019C9B9 /* SETableViewCellSingleLabel.xib */; };
+		84594F7421DC6BFE0019C9B9 /* SETableViewCellSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F4821DC6BFD0019C9B9 /* SETableViewCellSwitch.swift */; };
+		84594F7521DC6BFE0019C9B9 /* SETableViewCellSwitch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84594F4921DC6BFD0019C9B9 /* SETableViewCellSwitch.xib */; };
+		84594F7621DC6BFE0019C9B9 /* SETableViewCellTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F4B21DC6BFD0019C9B9 /* SETableViewCellTextField.swift */; };
+		84594F7721DC6BFE0019C9B9 /* SETableViewCellTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84594F4C21DC6BFD0019C9B9 /* SETableViewCellTextField.xib */; };
+		84594F7821DC6BFE0019C9B9 /* SETableViewCellTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F4E21DC6BFD0019C9B9 /* SETableViewCellTextView.swift */; };
+		84594F7921DC6BFE0019C9B9 /* SETableViewCellTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84594F4F21DC6BFD0019C9B9 /* SETableViewCellTextView.xib */; };
+		84594F7A21DC6BFE0019C9B9 /* dateLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F5121DC6BFD0019C9B9 /* dateLibrary.swift */; };
+		84594F7B21DC6BFE0019C9B9 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F5221DC6BFD0019C9B9 /* StringExtensions.swift */; };
+		84594F7C21DC6BFE0019C9B9 /* TextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F5321DC6BFD0019C9B9 /* TextFieldExtensions.swift */; };
+		84594F7F21DC6BFE0019C9B9 /* constantes globales.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F5821DC6BFD0019C9B9 /* constantes globales.swift */; };
+		84594F8021DC6BFE0019C9B9 /* funciones globales.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F5921DC6BFD0019C9B9 /* funciones globales.swift */; };
+		84594F8121DC6BFE0019C9B9 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F5B21DC6BFD0019C9B9 /* Toast.swift */; };
+		84594F8321DC6C850019C9B9 /* PCButtonStyleCutomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F8221DC6C850019C9B9 /* PCButtonStyleCutomView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +60,44 @@
 		84594F0E21DC68AC0019C9B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84594F1121DC68AC0019C9B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84594F1321DC68AC0019C9B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84594F1E21DC6A8E0019C9B9 /* PCMainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PCMainModel.swift; sourceTree = "<group>"; };
+		84594F2721DC6BFD0019C9B9 /* animacionCalendario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = animacionCalendario.swift; sourceTree = "<group>"; };
+		84594F2921DC6BFD0019C9B9 /* accionesAnual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = accionesAnual.swift; sourceTree = "<group>"; };
+		84594F2A21DC6BFD0019C9B9 /* dataModelAnual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dataModelAnual.swift; sourceTree = "<group>"; };
+		84594F2B21DC6BFD0019C9B9 /* pricipalAnual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pricipalAnual.swift; sourceTree = "<group>"; };
+		84594F2D21DC6BFD0019C9B9 /* botonRedondo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = botonRedondo.png; sourceTree = "<group>"; };
+		84594F2E21DC6BFD0019C9B9 /* calendario3_3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = calendario3_3.swift; sourceTree = "<group>"; };
+		84594F2F21DC6BFD0019C9B9 /* dataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dataModel.swift; sourceTree = "<group>"; };
+		84594F3121DC6BFD0019C9B9 /* accionesDiario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = accionesDiario.swift; sourceTree = "<group>"; };
+		84594F3221DC6BFD0019C9B9 /* dataModelDiario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dataModelDiario.swift; sourceTree = "<group>"; };
+		84594F3321DC6BFD0019C9B9 /* dibujosDiario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dibujosDiario.swift; sourceTree = "<group>"; };
+		84594F3421DC6BFD0019C9B9 /* principalDiario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = principalDiario.swift; sourceTree = "<group>"; };
+		84594F3521DC6BFD0019C9B9 /* updateDiario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = updateDiario.swift; sourceTree = "<group>"; };
+		84594F3721DC6BFD0019C9B9 /* accionesMensual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = accionesMensual.swift; sourceTree = "<group>"; };
+		84594F3821DC6BFD0019C9B9 /* dataModelMensual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dataModelMensual.swift; sourceTree = "<group>"; };
+		84594F3921DC6BFD0019C9B9 /* dibujosMensual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dibujosMensual.swift; sourceTree = "<group>"; };
+		84594F3A21DC6BFD0019C9B9 /* principalMensual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = principalMensual.swift; sourceTree = "<group>"; };
+		84594F3B21DC6BFD0019C9B9 /* updateMensual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = updateMensual.swift; sourceTree = "<group>"; };
+		84594F3C21DC6BFD0019C9B9 /* titulos methods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "titulos methods.swift"; sourceTree = "<group>"; };
+		84594F3F21DC6BFD0019C9B9 /* SETableViewCellDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SETableViewCellDate.swift; sourceTree = "<group>"; };
+		84594F4021DC6BFD0019C9B9 /* SETableViewCellDate.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SETableViewCellDate.xib; sourceTree = "<group>"; };
+		84594F4221DC6BFD0019C9B9 /* SETableViewCellOptionalDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SETableViewCellOptionalDate.swift; sourceTree = "<group>"; };
+		84594F4321DC6BFD0019C9B9 /* SETableViewCellOptionalDate.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SETableViewCellOptionalDate.xib; sourceTree = "<group>"; };
+		84594F4521DC6BFD0019C9B9 /* SETableViewCellSingleLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SETableViewCellSingleLabel.swift; sourceTree = "<group>"; };
+		84594F4621DC6BFD0019C9B9 /* SETableViewCellSingleLabel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SETableViewCellSingleLabel.xib; sourceTree = "<group>"; };
+		84594F4821DC6BFD0019C9B9 /* SETableViewCellSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SETableViewCellSwitch.swift; sourceTree = "<group>"; };
+		84594F4921DC6BFD0019C9B9 /* SETableViewCellSwitch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SETableViewCellSwitch.xib; sourceTree = "<group>"; };
+		84594F4B21DC6BFD0019C9B9 /* SETableViewCellTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SETableViewCellTextField.swift; sourceTree = "<group>"; };
+		84594F4C21DC6BFD0019C9B9 /* SETableViewCellTextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SETableViewCellTextField.xib; sourceTree = "<group>"; };
+		84594F4E21DC6BFD0019C9B9 /* SETableViewCellTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SETableViewCellTextView.swift; sourceTree = "<group>"; };
+		84594F4F21DC6BFD0019C9B9 /* SETableViewCellTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SETableViewCellTextView.xib; sourceTree = "<group>"; };
+		84594F5121DC6BFD0019C9B9 /* dateLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dateLibrary.swift; sourceTree = "<group>"; };
+		84594F5221DC6BFD0019C9B9 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		84594F5321DC6BFD0019C9B9 /* TextFieldExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldExtensions.swift; sourceTree = "<group>"; };
+		84594F5821DC6BFD0019C9B9 /* constantes globales.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "constantes globales.swift"; sourceTree = "<group>"; };
+		84594F5921DC6BFD0019C9B9 /* funciones globales.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "funciones globales.swift"; sourceTree = "<group>"; };
+		84594F5B21DC6BFD0019C9B9 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		84594F8221DC6C850019C9B9 /* PCButtonStyleCutomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PCButtonStyleCutomView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,11 +133,217 @@
 				84594F0721DC68AB0019C9B9 /* AppDelegate.swift */,
 				84594F0921DC68AB0019C9B9 /* ViewController.swift */,
 				84594F0B21DC68AB0019C9B9 /* Main.storyboard */,
+				84594F1921DC6A0C0019C9B9 /* PremiumCalendar */,
 				84594F0E21DC68AC0019C9B9 /* Assets.xcassets */,
 				84594F1021DC68AC0019C9B9 /* LaunchScreen.storyboard */,
 				84594F1321DC68AC0019C9B9 /* Info.plist */,
 			);
 			path = PremiumCalendar;
+			sourceTree = "<group>";
+		};
+		84594F1921DC6A0C0019C9B9 /* PremiumCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				84594F2521DC6BFD0019C9B9 /* Common */,
+				84594F1A21DC6A340019C9B9 /* ButtonStyle */,
+			);
+			path = PremiumCalendar;
+			sourceTree = "<group>";
+		};
+		84594F1A21DC6A340019C9B9 /* ButtonStyle */ = {
+			isa = PBXGroup;
+			children = (
+				84594F1D21DC6A6F0019C9B9 /* Model */,
+				84594F1C21DC6A660019C9B9 /* ViewModel */,
+				84594F1B21DC6A600019C9B9 /* View */,
+			);
+			path = ButtonStyle;
+			sourceTree = "<group>";
+		};
+		84594F1B21DC6A600019C9B9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84594F8221DC6C850019C9B9 /* PCButtonStyleCutomView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84594F1C21DC6A660019C9B9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		84594F1D21DC6A6F0019C9B9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84594F1E21DC6A8E0019C9B9 /* PCMainModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84594F2521DC6BFD0019C9B9 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				84594F2621DC6BFD0019C9B9 /* calendario 3_3 */,
+				84594F3D21DC6BFD0019C9B9 /* CommonCells */,
+				84594F5021DC6BFD0019C9B9 /* Extensions */,
+				84594F5721DC6BFD0019C9B9 /* globales */,
+				84594F5A21DC6BFD0019C9B9 /* Toast */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		84594F2621DC6BFD0019C9B9 /* calendario 3_3 */ = {
+			isa = PBXGroup;
+			children = (
+				84594F2721DC6BFD0019C9B9 /* animacionCalendario.swift */,
+				84594F2821DC6BFD0019C9B9 /* años */,
+				84594F2C21DC6BFD0019C9B9 /* art calendario */,
+				84594F2E21DC6BFD0019C9B9 /* calendario3_3.swift */,
+				84594F2F21DC6BFD0019C9B9 /* dataModel.swift */,
+				84594F3021DC6BFD0019C9B9 /* diario */,
+				84594F3621DC6BFD0019C9B9 /* mensual */,
+				84594F3C21DC6BFD0019C9B9 /* titulos methods.swift */,
+			);
+			path = "calendario 3_3";
+			sourceTree = "<group>";
+		};
+		84594F2821DC6BFD0019C9B9 /* años */ = {
+			isa = PBXGroup;
+			children = (
+				84594F2921DC6BFD0019C9B9 /* accionesAnual.swift */,
+				84594F2A21DC6BFD0019C9B9 /* dataModelAnual.swift */,
+				84594F2B21DC6BFD0019C9B9 /* pricipalAnual.swift */,
+			);
+			path = "años";
+			sourceTree = "<group>";
+		};
+		84594F2C21DC6BFD0019C9B9 /* art calendario */ = {
+			isa = PBXGroup;
+			children = (
+				84594F2D21DC6BFD0019C9B9 /* botonRedondo.png */,
+			);
+			path = "art calendario";
+			sourceTree = "<group>";
+		};
+		84594F3021DC6BFD0019C9B9 /* diario */ = {
+			isa = PBXGroup;
+			children = (
+				84594F3121DC6BFD0019C9B9 /* accionesDiario.swift */,
+				84594F3221DC6BFD0019C9B9 /* dataModelDiario.swift */,
+				84594F3321DC6BFD0019C9B9 /* dibujosDiario.swift */,
+				84594F3421DC6BFD0019C9B9 /* principalDiario.swift */,
+				84594F3521DC6BFD0019C9B9 /* updateDiario.swift */,
+			);
+			path = diario;
+			sourceTree = "<group>";
+		};
+		84594F3621DC6BFD0019C9B9 /* mensual */ = {
+			isa = PBXGroup;
+			children = (
+				84594F3721DC6BFD0019C9B9 /* accionesMensual.swift */,
+				84594F3821DC6BFD0019C9B9 /* dataModelMensual.swift */,
+				84594F3921DC6BFD0019C9B9 /* dibujosMensual.swift */,
+				84594F3A21DC6BFD0019C9B9 /* principalMensual.swift */,
+				84594F3B21DC6BFD0019C9B9 /* updateMensual.swift */,
+			);
+			path = mensual;
+			sourceTree = "<group>";
+		};
+		84594F3D21DC6BFD0019C9B9 /* CommonCells */ = {
+			isa = PBXGroup;
+			children = (
+				84594F3E21DC6BFD0019C9B9 /* DateCell */,
+				84594F4121DC6BFD0019C9B9 /* OptionalDateCell */,
+				84594F4421DC6BFD0019C9B9 /* SingleLabelCell */,
+				84594F4721DC6BFD0019C9B9 /* SwitchCell */,
+				84594F4A21DC6BFD0019C9B9 /* TextFieldCell */,
+				84594F4D21DC6BFD0019C9B9 /* TextViewCell */,
+			);
+			path = CommonCells;
+			sourceTree = "<group>";
+		};
+		84594F3E21DC6BFD0019C9B9 /* DateCell */ = {
+			isa = PBXGroup;
+			children = (
+				84594F3F21DC6BFD0019C9B9 /* SETableViewCellDate.swift */,
+				84594F4021DC6BFD0019C9B9 /* SETableViewCellDate.xib */,
+			);
+			path = DateCell;
+			sourceTree = "<group>";
+		};
+		84594F4121DC6BFD0019C9B9 /* OptionalDateCell */ = {
+			isa = PBXGroup;
+			children = (
+				84594F4221DC6BFD0019C9B9 /* SETableViewCellOptionalDate.swift */,
+				84594F4321DC6BFD0019C9B9 /* SETableViewCellOptionalDate.xib */,
+			);
+			path = OptionalDateCell;
+			sourceTree = "<group>";
+		};
+		84594F4421DC6BFD0019C9B9 /* SingleLabelCell */ = {
+			isa = PBXGroup;
+			children = (
+				84594F4521DC6BFD0019C9B9 /* SETableViewCellSingleLabel.swift */,
+				84594F4621DC6BFD0019C9B9 /* SETableViewCellSingleLabel.xib */,
+			);
+			path = SingleLabelCell;
+			sourceTree = "<group>";
+		};
+		84594F4721DC6BFD0019C9B9 /* SwitchCell */ = {
+			isa = PBXGroup;
+			children = (
+				84594F4821DC6BFD0019C9B9 /* SETableViewCellSwitch.swift */,
+				84594F4921DC6BFD0019C9B9 /* SETableViewCellSwitch.xib */,
+			);
+			path = SwitchCell;
+			sourceTree = "<group>";
+		};
+		84594F4A21DC6BFD0019C9B9 /* TextFieldCell */ = {
+			isa = PBXGroup;
+			children = (
+				84594F4B21DC6BFD0019C9B9 /* SETableViewCellTextField.swift */,
+				84594F4C21DC6BFD0019C9B9 /* SETableViewCellTextField.xib */,
+			);
+			path = TextFieldCell;
+			sourceTree = "<group>";
+		};
+		84594F4D21DC6BFD0019C9B9 /* TextViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				84594F4E21DC6BFD0019C9B9 /* SETableViewCellTextView.swift */,
+				84594F4F21DC6BFD0019C9B9 /* SETableViewCellTextView.xib */,
+			);
+			path = TextViewCell;
+			sourceTree = "<group>";
+		};
+		84594F5021DC6BFD0019C9B9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				84594F5121DC6BFD0019C9B9 /* dateLibrary.swift */,
+				84594F5221DC6BFD0019C9B9 /* StringExtensions.swift */,
+				84594F5321DC6BFD0019C9B9 /* TextFieldExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		84594F5721DC6BFD0019C9B9 /* globales */ = {
+			isa = PBXGroup;
+			children = (
+				84594F5821DC6BFD0019C9B9 /* constantes globales.swift */,
+				84594F5921DC6BFD0019C9B9 /* funciones globales.swift */,
+			);
+			path = globales;
+			sourceTree = "<group>";
+		};
+		84594F5A21DC6BFD0019C9B9 /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				84594F5B21DC6BFD0019C9B9 /* Toast.swift */,
+			);
+			path = Toast;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,8 +405,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				84594F1221DC68AC0019C9B9 /* LaunchScreen.storyboard in Resources */,
+				84594F7721DC6BFE0019C9B9 /* SETableViewCellTextField.xib in Resources */,
+				84594F6F21DC6BFE0019C9B9 /* SETableViewCellDate.xib in Resources */,
+				84594F7921DC6BFE0019C9B9 /* SETableViewCellTextView.xib in Resources */,
 				84594F0F21DC68AC0019C9B9 /* Assets.xcassets in Resources */,
+				84594F7521DC6BFE0019C9B9 /* SETableViewCellSwitch.xib in Resources */,
+				84594F7121DC6BFE0019C9B9 /* SETableViewCellOptionalDate.xib in Resources */,
+				84594F7321DC6BFE0019C9B9 /* SETableViewCellSingleLabel.xib in Resources */,
 				84594F0D21DC68AB0019C9B9 /* Main.storyboard in Resources */,
+				84594F6021DC6BFE0019C9B9 /* botonRedondo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,8 +424,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84594F6D21DC6BFE0019C9B9 /* titulos methods.swift in Sources */,
+				84594F6E21DC6BFE0019C9B9 /* SETableViewCellDate.swift in Sources */,
+				84594F6921DC6BFE0019C9B9 /* dataModelMensual.swift in Sources */,
+				84594F6621DC6BFE0019C9B9 /* principalDiario.swift in Sources */,
+				84594F8321DC6C850019C9B9 /* PCButtonStyleCutomView.swift in Sources */,
+				84594F6C21DC6BFE0019C9B9 /* updateMensual.swift in Sources */,
+				84594F6B21DC6BFE0019C9B9 /* principalMensual.swift in Sources */,
+				84594F5D21DC6BFE0019C9B9 /* accionesAnual.swift in Sources */,
+				84594F7A21DC6BFE0019C9B9 /* dateLibrary.swift in Sources */,
+				84594F1F21DC6A8E0019C9B9 /* PCMainModel.swift in Sources */,
+				84594F7221DC6BFE0019C9B9 /* SETableViewCellSingleLabel.swift in Sources */,
+				84594F6121DC6BFE0019C9B9 /* calendario3_3.swift in Sources */,
+				84594F6421DC6BFE0019C9B9 /* dataModelDiario.swift in Sources */,
+				84594F7821DC6BFE0019C9B9 /* SETableViewCellTextView.swift in Sources */,
+				84594F6221DC6BFE0019C9B9 /* dataModel.swift in Sources */,
+				84594F7B21DC6BFE0019C9B9 /* StringExtensions.swift in Sources */,
+				84594F6321DC6BFE0019C9B9 /* accionesDiario.swift in Sources */,
 				84594F0A21DC68AB0019C9B9 /* ViewController.swift in Sources */,
+				84594F6721DC6BFE0019C9B9 /* updateDiario.swift in Sources */,
+				84594F5F21DC6BFE0019C9B9 /* pricipalAnual.swift in Sources */,
+				84594F7C21DC6BFE0019C9B9 /* TextFieldExtensions.swift in Sources */,
+				84594F6821DC6BFE0019C9B9 /* accionesMensual.swift in Sources */,
+				84594F7421DC6BFE0019C9B9 /* SETableViewCellSwitch.swift in Sources */,
+				84594F5C21DC6BFE0019C9B9 /* animacionCalendario.swift in Sources */,
 				84594F0821DC68AB0019C9B9 /* AppDelegate.swift in Sources */,
+				84594F7021DC6BFE0019C9B9 /* SETableViewCellOptionalDate.swift in Sources */,
+				84594F7F21DC6BFE0019C9B9 /* constantes globales.swift in Sources */,
+				84594F6A21DC6BFE0019C9B9 /* dibujosMensual.swift in Sources */,
+				84594F5E21DC6BFE0019C9B9 /* dataModelAnual.swift in Sources */,
+				84594F8021DC6BFE0019C9B9 /* funciones globales.swift in Sources */,
+				84594F8121DC6BFE0019C9B9 /* Toast.swift in Sources */,
+				84594F6521DC6BFE0019C9B9 /* dibujosDiario.swift in Sources */,
+				84594F7621DC6BFE0019C9B9 /* SETableViewCellTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
