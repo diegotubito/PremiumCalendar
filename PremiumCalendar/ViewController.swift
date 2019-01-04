@@ -14,9 +14,25 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        Toast.show(message: "Premium Calendar", controller: self)
+      //  Toast.show(message: "Premium Calendar", controller: self)
+     
+        view.backgroundColor = UIColor.darkGray
+        
+        let prueba = PCDiaCustomView(frame: CGRect(x: 50, y: 50, width: 200, height: 50))
+        prueba.index = 33
+        prueba.delegate = self
+        view.addSubview(prueba)
+        
      }
 
 
+}
+
+extension ViewController: PCDiaCustomViewDelegate {
+    func didTouched(index: Int) {
+        print(index)
+    }
+    
+    
 }
 

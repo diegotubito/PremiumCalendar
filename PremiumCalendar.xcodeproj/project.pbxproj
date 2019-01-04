@@ -50,6 +50,8 @@
 		84594F8021DC6BFE0019C9B9 /* funciones globales.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F5921DC6BFD0019C9B9 /* funciones globales.swift */; };
 		84594F8121DC6BFE0019C9B9 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F5B21DC6BFD0019C9B9 /* Toast.swift */; };
 		84594F8321DC6C850019C9B9 /* PCButtonStyleCutomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F8221DC6C850019C9B9 /* PCButtonStyleCutomView.swift */; };
+		84A9356721DF06B200BE8C45 /* PCDiaCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A9356621DF06B200BE8C45 /* PCDiaCustomView.xib */; };
+		84A9356921DF06CE00BE8C45 /* PCDiaCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A9356821DF06CE00BE8C45 /* PCDiaCustomView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +100,8 @@
 		84594F5921DC6BFD0019C9B9 /* funciones globales.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "funciones globales.swift"; sourceTree = "<group>"; };
 		84594F5B21DC6BFD0019C9B9 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		84594F8221DC6C850019C9B9 /* PCButtonStyleCutomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PCButtonStyleCutomView.swift; sourceTree = "<group>"; };
+		84A9356621DF06B200BE8C45 /* PCDiaCustomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PCDiaCustomView.xib; sourceTree = "<group>"; };
+		84A9356821DF06CE00BE8C45 /* PCDiaCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PCDiaCustomView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,7 @@
 			children = (
 				84594F0721DC68AB0019C9B9 /* AppDelegate.swift */,
 				84594F0921DC68AB0019C9B9 /* ViewController.swift */,
+				84A9356221DF063A00BE8C45 /* CustomsViews */,
 				84594F0B21DC68AB0019C9B9 /* Main.storyboard */,
 				84594F1921DC6A0C0019C9B9 /* PremiumCalendar */,
 				84594F0E21DC68AC0019C9B9 /* Assets.xcassets */,
@@ -346,6 +351,23 @@
 			path = Toast;
 			sourceTree = "<group>";
 		};
+		84A9356221DF063A00BE8C45 /* CustomsViews */ = {
+			isa = PBXGroup;
+			children = (
+				84A9356321DF065000BE8C45 /* DiaCustomView */,
+			);
+			path = CustomsViews;
+			sourceTree = "<group>";
+		};
+		84A9356321DF065000BE8C45 /* DiaCustomView */ = {
+			isa = PBXGroup;
+			children = (
+				84A9356621DF06B200BE8C45 /* PCDiaCustomView.xib */,
+				84A9356821DF06CE00BE8C45 /* PCDiaCustomView.swift */,
+			);
+			path = DiaCustomView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -408,6 +430,7 @@
 				84594F7721DC6BFE0019C9B9 /* SETableViewCellTextField.xib in Resources */,
 				84594F6F21DC6BFE0019C9B9 /* SETableViewCellDate.xib in Resources */,
 				84594F7921DC6BFE0019C9B9 /* SETableViewCellTextView.xib in Resources */,
+				84A9356721DF06B200BE8C45 /* PCDiaCustomView.xib in Resources */,
 				84594F0F21DC68AC0019C9B9 /* Assets.xcassets in Resources */,
 				84594F7521DC6BFE0019C9B9 /* SETableViewCellSwitch.xib in Resources */,
 				84594F7121DC6BFE0019C9B9 /* SETableViewCellOptionalDate.xib in Resources */,
@@ -445,6 +468,7 @@
 				84594F6721DC6BFE0019C9B9 /* updateDiario.swift in Sources */,
 				84594F5F21DC6BFE0019C9B9 /* pricipalAnual.swift in Sources */,
 				84594F7C21DC6BFE0019C9B9 /* TextFieldExtensions.swift in Sources */,
+				84A9356921DF06CE00BE8C45 /* PCDiaCustomView.swift in Sources */,
 				84594F6821DC6BFE0019C9B9 /* accionesMensual.swift in Sources */,
 				84594F7421DC6BFE0019C9B9 /* SETableViewCellSwitch.swift in Sources */,
 				84594F5C21DC6BFE0019C9B9 /* animacionCalendario.swift in Sources */,
