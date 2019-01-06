@@ -9,6 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var calendario : PCMensualCustomView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,21 +18,34 @@ class ViewController: UIViewController {
         
       //  Toast.show(message: "Premium Calendar", controller: self)
      
-        view.backgroundColor = UIColor.darkGray
+     
+        NotificationCenter.default.addObserver(self, selector: #selector(dayDidTouchedNotificationHandle(_:)), name: .dayDidTouchNotification, object: nil)
+        calendario = PCMensualCustomView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 200))
+        view.addSubview(calendario)
         
-        let prueba = PCDiaCustomView(frame: CGRect(x: 50, y: 50, width: 200, height: 50))
-        prueba.index = 33
-        prueba.delegate = self
-        view.addSubview(prueba)
+        calendario.alpha = 0
+        UIView.animate(withDuration: 0.75, delay: 0.0, options: .curveEaseIn, animations: {
+            self.calendario.alpha = 1.0
+        })
         
      }
 
 
 }
 
-extension ViewController: PCDiaCustomViewDelegate {
-    func didTouched(index: Int) {
-        print(index)
+extension ViewController {
+    
+    @objc func dayDidTouchedNotificationHandle(_ sender: Notification) {
+  
+        let coordenadas = sender.object as? (Int, Int)
+        print(coordenadas)
+        
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+            self.calendario.alpha = 0.0
+        }, completion: {_ in
+            self.calendario.removeFromSuperview()
+        })
+        
     }
     
     

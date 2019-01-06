@@ -12,7 +12,6 @@
 		84594F0D21DC68AB0019C9B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84594F0B21DC68AB0019C9B9 /* Main.storyboard */; };
 		84594F0F21DC68AC0019C9B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84594F0E21DC68AC0019C9B9 /* Assets.xcassets */; };
 		84594F1221DC68AC0019C9B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84594F1021DC68AC0019C9B9 /* LaunchScreen.storyboard */; };
-		84594F1F21DC6A8E0019C9B9 /* PCMainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F1E21DC6A8E0019C9B9 /* PCMainModel.swift */; };
 		84594F5C21DC6BFE0019C9B9 /* animacionCalendario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F2721DC6BFD0019C9B9 /* animacionCalendario.swift */; };
 		84594F5D21DC6BFE0019C9B9 /* accionesAnual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F2921DC6BFD0019C9B9 /* accionesAnual.swift */; };
 		84594F5E21DC6BFE0019C9B9 /* dataModelAnual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F2A21DC6BFD0019C9B9 /* dataModelAnual.swift */; };
@@ -49,9 +48,9 @@
 		84594F7F21DC6BFE0019C9B9 /* constantes globales.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F5821DC6BFD0019C9B9 /* constantes globales.swift */; };
 		84594F8021DC6BFE0019C9B9 /* funciones globales.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F5921DC6BFD0019C9B9 /* funciones globales.swift */; };
 		84594F8121DC6BFE0019C9B9 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F5B21DC6BFD0019C9B9 /* Toast.swift */; };
-		84594F8321DC6C850019C9B9 /* PCButtonStyleCutomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84594F8221DC6C850019C9B9 /* PCButtonStyleCutomView.swift */; };
-		84A9356721DF06B200BE8C45 /* PCDiaCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A9356621DF06B200BE8C45 /* PCDiaCustomView.xib */; };
 		84A9356921DF06CE00BE8C45 /* PCDiaCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A9356821DF06CE00BE8C45 /* PCDiaCustomView.swift */; };
+		84A9359C21E1B81E00BE8C45 /* PCMensualCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A9359B21E1B81E00BE8C45 /* PCMensualCustomView.swift */; };
+		84A9359F21E1C3A200BE8C45 /* PCMensualViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A9359E21E1C3A200BE8C45 /* PCMensualViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,7 +61,6 @@
 		84594F0E21DC68AC0019C9B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84594F1121DC68AC0019C9B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84594F1321DC68AC0019C9B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		84594F1E21DC6A8E0019C9B9 /* PCMainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PCMainModel.swift; sourceTree = "<group>"; };
 		84594F2721DC6BFD0019C9B9 /* animacionCalendario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = animacionCalendario.swift; sourceTree = "<group>"; };
 		84594F2921DC6BFD0019C9B9 /* accionesAnual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = accionesAnual.swift; sourceTree = "<group>"; };
 		84594F2A21DC6BFD0019C9B9 /* dataModelAnual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dataModelAnual.swift; sourceTree = "<group>"; };
@@ -99,9 +97,9 @@
 		84594F5821DC6BFD0019C9B9 /* constantes globales.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "constantes globales.swift"; sourceTree = "<group>"; };
 		84594F5921DC6BFD0019C9B9 /* funciones globales.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "funciones globales.swift"; sourceTree = "<group>"; };
 		84594F5B21DC6BFD0019C9B9 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
-		84594F8221DC6C850019C9B9 /* PCButtonStyleCutomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PCButtonStyleCutomView.swift; sourceTree = "<group>"; };
-		84A9356621DF06B200BE8C45 /* PCDiaCustomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PCDiaCustomView.xib; sourceTree = "<group>"; };
 		84A9356821DF06CE00BE8C45 /* PCDiaCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PCDiaCustomView.swift; sourceTree = "<group>"; };
+		84A9359B21E1B81E00BE8C45 /* PCMensualCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PCMensualCustomView.swift; sourceTree = "<group>"; };
+		84A9359E21E1C3A200BE8C45 /* PCMensualViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PCMensualViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,9 +134,9 @@
 			children = (
 				84594F0721DC68AB0019C9B9 /* AppDelegate.swift */,
 				84594F0921DC68AB0019C9B9 /* ViewController.swift */,
-				84A9356221DF063A00BE8C45 /* CustomsViews */,
-				84594F0B21DC68AB0019C9B9 /* Main.storyboard */,
 				84594F1921DC6A0C0019C9B9 /* PremiumCalendar */,
+				84594F0B21DC68AB0019C9B9 /* Main.storyboard */,
+				84594F2521DC6BFD0019C9B9 /* Common */,
 				84594F0E21DC68AC0019C9B9 /* Assets.xcassets */,
 				84594F1021DC68AC0019C9B9 /* LaunchScreen.storyboard */,
 				84594F1321DC68AC0019C9B9 /* Info.plist */,
@@ -149,43 +147,10 @@
 		84594F1921DC6A0C0019C9B9 /* PremiumCalendar */ = {
 			isa = PBXGroup;
 			children = (
-				84594F2521DC6BFD0019C9B9 /* Common */,
-				84594F1A21DC6A340019C9B9 /* ButtonStyle */,
+				84A9359D21E1C37F00BE8C45 /* Model */,
+				84A9356221DF063A00BE8C45 /* View */,
 			);
 			path = PremiumCalendar;
-			sourceTree = "<group>";
-		};
-		84594F1A21DC6A340019C9B9 /* ButtonStyle */ = {
-			isa = PBXGroup;
-			children = (
-				84594F1D21DC6A6F0019C9B9 /* Model */,
-				84594F1C21DC6A660019C9B9 /* ViewModel */,
-				84594F1B21DC6A600019C9B9 /* View */,
-			);
-			path = ButtonStyle;
-			sourceTree = "<group>";
-		};
-		84594F1B21DC6A600019C9B9 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				84594F8221DC6C850019C9B9 /* PCButtonStyleCutomView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		84594F1C21DC6A660019C9B9 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		84594F1D21DC6A6F0019C9B9 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				84594F1E21DC6A8E0019C9B9 /* PCMainModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		84594F2521DC6BFD0019C9B9 /* Common */ = {
@@ -351,21 +316,37 @@
 			path = Toast;
 			sourceTree = "<group>";
 		};
-		84A9356221DF063A00BE8C45 /* CustomsViews */ = {
+		84A9356221DF063A00BE8C45 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				84A9356321DF065000BE8C45 /* DiaCustomView */,
+				84A9359821E1B02700BE8C45 /* Mensual */,
 			);
-			path = CustomsViews;
+			path = View;
 			sourceTree = "<group>";
 		};
-		84A9356321DF065000BE8C45 /* DiaCustomView */ = {
+		84A9356321DF065000BE8C45 /* DiaSimple */ = {
 			isa = PBXGroup;
 			children = (
-				84A9356621DF06B200BE8C45 /* PCDiaCustomView.xib */,
 				84A9356821DF06CE00BE8C45 /* PCDiaCustomView.swift */,
 			);
-			path = DiaCustomView;
+			path = DiaSimple;
+			sourceTree = "<group>";
+		};
+		84A9359821E1B02700BE8C45 /* Mensual */ = {
+			isa = PBXGroup;
+			children = (
+				84A9359B21E1B81E00BE8C45 /* PCMensualCustomView.swift */,
+				84A9356321DF065000BE8C45 /* DiaSimple */,
+			);
+			path = Mensual;
+			sourceTree = "<group>";
+		};
+		84A9359D21E1C37F00BE8C45 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84A9359E21E1C3A200BE8C45 /* PCMensualViewModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -430,7 +411,6 @@
 				84594F7721DC6BFE0019C9B9 /* SETableViewCellTextField.xib in Resources */,
 				84594F6F21DC6BFE0019C9B9 /* SETableViewCellDate.xib in Resources */,
 				84594F7921DC6BFE0019C9B9 /* SETableViewCellTextView.xib in Resources */,
-				84A9356721DF06B200BE8C45 /* PCDiaCustomView.xib in Resources */,
 				84594F0F21DC68AC0019C9B9 /* Assets.xcassets in Resources */,
 				84594F7521DC6BFE0019C9B9 /* SETableViewCellSwitch.xib in Resources */,
 				84594F7121DC6BFE0019C9B9 /* SETableViewCellOptionalDate.xib in Resources */,
@@ -451,12 +431,10 @@
 				84594F6E21DC6BFE0019C9B9 /* SETableViewCellDate.swift in Sources */,
 				84594F6921DC6BFE0019C9B9 /* dataModelMensual.swift in Sources */,
 				84594F6621DC6BFE0019C9B9 /* principalDiario.swift in Sources */,
-				84594F8321DC6C850019C9B9 /* PCButtonStyleCutomView.swift in Sources */,
 				84594F6C21DC6BFE0019C9B9 /* updateMensual.swift in Sources */,
 				84594F6B21DC6BFE0019C9B9 /* principalMensual.swift in Sources */,
 				84594F5D21DC6BFE0019C9B9 /* accionesAnual.swift in Sources */,
 				84594F7A21DC6BFE0019C9B9 /* dateLibrary.swift in Sources */,
-				84594F1F21DC6A8E0019C9B9 /* PCMainModel.swift in Sources */,
 				84594F7221DC6BFE0019C9B9 /* SETableViewCellSingleLabel.swift in Sources */,
 				84594F6121DC6BFE0019C9B9 /* calendario3_3.swift in Sources */,
 				84594F6421DC6BFE0019C9B9 /* dataModelDiario.swift in Sources */,
@@ -474,12 +452,14 @@
 				84594F5C21DC6BFE0019C9B9 /* animacionCalendario.swift in Sources */,
 				84594F0821DC68AB0019C9B9 /* AppDelegate.swift in Sources */,
 				84594F7021DC6BFE0019C9B9 /* SETableViewCellOptionalDate.swift in Sources */,
+				84A9359F21E1C3A200BE8C45 /* PCMensualViewModel.swift in Sources */,
 				84594F7F21DC6BFE0019C9B9 /* constantes globales.swift in Sources */,
 				84594F6A21DC6BFE0019C9B9 /* dibujosMensual.swift in Sources */,
 				84594F5E21DC6BFE0019C9B9 /* dataModelAnual.swift in Sources */,
 				84594F8021DC6BFE0019C9B9 /* funciones globales.swift in Sources */,
 				84594F8121DC6BFE0019C9B9 /* Toast.swift in Sources */,
 				84594F6521DC6BFE0019C9B9 /* dibujosDiario.swift in Sources */,
+				84A9359C21E1B81E00BE8C45 /* PCMensualCustomView.swift in Sources */,
 				84594F7621DC6BFE0019C9B9 /* SETableViewCellTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
