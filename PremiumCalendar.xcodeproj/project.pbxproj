@@ -51,6 +51,9 @@
 		84A9356921DF06CE00BE8C45 /* PCDiaCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A9356821DF06CE00BE8C45 /* PCDiaCustomView.swift */; };
 		84A9359C21E1B81E00BE8C45 /* PCMensualCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A9359B21E1B81E00BE8C45 /* PCMensualCustomView.swift */; };
 		84A9359F21E1C3A200BE8C45 /* PCMensualViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A9359E21E1C3A200BE8C45 /* PCMensualViewModel.swift */; };
+		84FA9C3E21E25517001A253B /* basicAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA9C3D21E25517001A253B /* basicAnimation.swift */; };
+		84FA9C4221E2927F001A253B /* PCMensualModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA9C4121E2927F001A253B /* PCMensualModel.swift */; };
+		84FA9C4521E2A126001A253B /* PCMensualViewModelContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA9C4421E2A126001A253B /* PCMensualViewModelContract.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +103,9 @@
 		84A9356821DF06CE00BE8C45 /* PCDiaCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PCDiaCustomView.swift; sourceTree = "<group>"; };
 		84A9359B21E1B81E00BE8C45 /* PCMensualCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PCMensualCustomView.swift; sourceTree = "<group>"; };
 		84A9359E21E1C3A200BE8C45 /* PCMensualViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PCMensualViewModel.swift; sourceTree = "<group>"; };
+		84FA9C3D21E25517001A253B /* basicAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = basicAnimation.swift; sourceTree = "<group>"; };
+		84FA9C4121E2927F001A253B /* PCMensualModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PCMensualModel.swift; sourceTree = "<group>"; };
+		84FA9C4421E2A126001A253B /* PCMensualViewModelContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PCMensualViewModelContract.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,8 +153,7 @@
 		84594F1921DC6A0C0019C9B9 /* PremiumCalendar */ = {
 			isa = PBXGroup;
 			children = (
-				84A9359D21E1C37F00BE8C45 /* Model */,
-				84A9356221DF063A00BE8C45 /* View */,
+				84FA9C4321E2997D001A253B /* Mensual */,
 			);
 			path = PremiumCalendar;
 			sourceTree = "<group>";
@@ -161,6 +166,7 @@
 				84594F5021DC6BFD0019C9B9 /* Extensions */,
 				84594F5721DC6BFD0019C9B9 /* globales */,
 				84594F5A21DC6BFD0019C9B9 /* Toast */,
+				84FA9C3D21E25517001A253B /* basicAnimation.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -319,7 +325,8 @@
 		84A9356221DF063A00BE8C45 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				84A9359821E1B02700BE8C45 /* Mensual */,
+				84A9359B21E1B81E00BE8C45 /* PCMensualCustomView.swift */,
+				84A9356321DF065000BE8C45 /* DiaSimple */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -332,21 +339,31 @@
 			path = DiaSimple;
 			sourceTree = "<group>";
 		};
-		84A9359821E1B02700BE8C45 /* Mensual */ = {
+		84A9359D21E1C37F00BE8C45 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				84A9359B21E1B81E00BE8C45 /* PCMensualCustomView.swift */,
-				84A9356321DF065000BE8C45 /* DiaSimple */,
-			);
-			path = Mensual;
-			sourceTree = "<group>";
-		};
-		84A9359D21E1C37F00BE8C45 /* Model */ = {
-			isa = PBXGroup;
-			children = (
+				84FA9C4421E2A126001A253B /* PCMensualViewModelContract.swift */,
 				84A9359E21E1C3A200BE8C45 /* PCMensualViewModel.swift */,
 			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		84FA9C4021E29267001A253B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84FA9C4121E2927F001A253B /* PCMensualModel.swift */,
+			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		84FA9C4321E2997D001A253B /* Mensual */ = {
+			isa = PBXGroup;
+			children = (
+				84FA9C4021E29267001A253B /* Model */,
+				84A9359D21E1C37F00BE8C45 /* ViewModel */,
+				84A9356221DF063A00BE8C45 /* View */,
+			);
+			path = Mensual;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -429,6 +446,8 @@
 			files = (
 				84594F6D21DC6BFE0019C9B9 /* titulos methods.swift in Sources */,
 				84594F6E21DC6BFE0019C9B9 /* SETableViewCellDate.swift in Sources */,
+				84FA9C3E21E25517001A253B /* basicAnimation.swift in Sources */,
+				84FA9C4521E2A126001A253B /* PCMensualViewModelContract.swift in Sources */,
 				84594F6921DC6BFE0019C9B9 /* dataModelMensual.swift in Sources */,
 				84594F6621DC6BFE0019C9B9 /* principalDiario.swift in Sources */,
 				84594F6C21DC6BFE0019C9B9 /* updateMensual.swift in Sources */,
@@ -438,6 +457,7 @@
 				84594F7221DC6BFE0019C9B9 /* SETableViewCellSingleLabel.swift in Sources */,
 				84594F6121DC6BFE0019C9B9 /* calendario3_3.swift in Sources */,
 				84594F6421DC6BFE0019C9B9 /* dataModelDiario.swift in Sources */,
+				84FA9C4221E2927F001A253B /* PCMensualModel.swift in Sources */,
 				84594F7821DC6BFE0019C9B9 /* SETableViewCellTextView.swift in Sources */,
 				84594F6221DC6BFE0019C9B9 /* dataModel.swift in Sources */,
 				84594F7B21DC6BFE0019C9B9 /* StringExtensions.swift in Sources */,

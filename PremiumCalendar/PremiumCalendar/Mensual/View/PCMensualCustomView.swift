@@ -9,47 +9,99 @@
 import UIKit
 
 @IBDesignable
-class PCMensualCustomView: UIView {
+class PCMensualCustomView: UIView, PCMensualViewContract {
+
+    var listaViews = [PCDiaCustomView]()
+    
+    var viewModel : PCMensualViewModelContract!
+    
+    func updateView() {
+        dibujarGrilla()
+    }
+    
+    @IBInspectable
+    var colorLabelDia: UIColor = UIColor.white {
+        didSet {
+            dibujarGrilla()
+        }
+    }
+    
+    @IBInspectable
+    var fuenteLabelDia: String = "Arial" {
+        didSet {
+            dibujarGrilla()
+        }
+    }
+    @IBInspectable
+    var tamañoFuente: CGFloat = 10.0 {
+        didSet {
+            dibujarGrilla()
+        }
+    }
+    
+    @IBInspectable
+    var fondoPlantilla: UIColor = UIColor.blue {
+        didSet {
+            dibujarGrilla()
+        }
+    }
+    
+    @IBInspectable
+    var fondoDia: UIColor = UIColor.blue {
+        didSet {
+            dibujarGrilla()
+        }
+    }
+    
+   
     @IBInspectable
     var radio: CGFloat = 0 {
         didSet {
-            inicializar()
+            dibujarGrilla()
         }
     }
     
     @IBInspectable
     var bordeColor : UIColor = UIColor.black {
         didSet {
-            inicializar()
+            dibujarGrilla()
         }
     }
     
     @IBInspectable
     var bordeAncho : CGFloat = 0 {
         didSet {
-            inicializar()
+            dibujarGrilla()
         }
     }
     
+   
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         inicializar()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+   
         inicializar()
     }
     
     func inicializar() {
-        for i in subviews {
-            i.removeFromSuperview()
-        }
-        dibujarGrilla()
+         self.viewModel = PCMensualViewModel(withCustomView: self)
+         self.dibujarGrilla()
     }
     
     func dibujarGrilla() {
+        for i in self.subviews {
+            i.removeFromSuperview()
+        }
+        listaViews.removeAll()
         
+        backgroundColor = fondoPlantilla
  
         let grilla = crearColumnas()
         
@@ -88,11 +140,18 @@ class PCMensualCustomView: UIView {
         
         for index in 0...6 {
             let nuevaView = PCDiaCustomView(frame: CGRect())
-           nuevaView.columna = index
+            
+              nuevaView.columna = index
             nuevaView.fila = fila
+            nuevaView.colorLabelCentral = colorLabelDia
+            nuevaView.fuenteLabelCentral = UIFont(name: fuenteLabelDia, size: tamañoFuente)!
             nuevaView.bordeAncho = bordeAncho
             nuevaView.bordeColor = bordeColor
+            nuevaView.fondoDia = fondoDia
             nuevaView.radio = radio
+            nuevaView.delegate = self
+            
+            listaViews.append(nuevaView)
             viewsFila.append(nuevaView)
         }
         let stackFila = UIStackView(arrangedSubviews: viewsFila)
@@ -103,4 +162,31 @@ class PCMensualCustomView: UIView {
         
         return stackFila
     }
+    
+    func deselectAll() {
+        for view in listaViews {
+            view.fondoSeleccion.backgroundColor = UIColor.clear
+        }
+    }
+    
+    func showSelectedItems() {
+        deselectAll()
+        
+        for index in viewModel.model.selectedItems {
+            let view = listaViews[index]
+            view.fondoSeleccion.backgroundColor = UIColor.red
+            if viewModel.model.selectionMode == PCMensualSelectionMode.doubleSelection && viewModel.model.selectedItems.count > 2 {
+                view.zoomInWithEasing(duration: 1/(Double(index+1)), easingOffset:0.05)
+            }
+        }
+        
+    }
+}
+
+
+extension PCMensualCustomView: PCDiaCustomViewDelegate {
+    func didTouched(fila: Int, columna: Int) {
+        viewModel.selectedView((fila, columna))
+    }
+  
 }
