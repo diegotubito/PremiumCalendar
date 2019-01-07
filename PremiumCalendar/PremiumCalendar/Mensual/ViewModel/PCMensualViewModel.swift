@@ -51,6 +51,8 @@ class PCMensualViewModel: NSObject, PCMensualViewModelContract {
                 model.selectedItems.append(index)
             }
             
+        } else if model.selectionMode == PCMensualSelectionMode.doubleSelection {
+            
         }
          _view.showSelectedItems()
         

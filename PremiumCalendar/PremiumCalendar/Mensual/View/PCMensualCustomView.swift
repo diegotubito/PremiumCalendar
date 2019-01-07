@@ -175,11 +175,31 @@ class PCMensualCustomView: UIView, PCMensualViewContract {
         for index in viewModel.model.selectedItems {
             let view = listaViews[index]
             view.fondoSeleccion.backgroundColor = UIColor.red
-            if viewModel.model.selectionMode == PCMensualSelectionMode.doubleSelection && viewModel.model.selectedItems.count > 2 {
-                view.zoomInWithEasing(duration: 1/(Double(index+1)), easingOffset:0.05)
-            }
+            
+            animarSegunModo(view: view)
+                
         }
         
+    }
+    
+    func animarSegunModo(view: PCDiaCustomView) {
+      
+        view.buttonAnimation()
+        if viewModel.model.selectionMode == PCMensualSelectionMode.doubleSelection && viewModel.model.selectedItems.count >= 2 {
+            animarViewModeDoubleSelection(view: view)
+        }
+        
+    }
+    
+    func animarViewModeDoubleSelection(view: PCDiaCustomView) {
+        
+        view.fondoSeleccion.transform = CGAffineTransform(scaleX: 0, y: 0)
+        
+        UIButton.animate(withDuration: 0.2, delay: 0.02 ,
+                         animations: {
+                            view.fondoSeleccion.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        })
+
     }
 }
 
@@ -189,4 +209,33 @@ extension PCMensualCustomView: PCDiaCustomViewDelegate {
         viewModel.selectedView((fila, columna))
     }
   
+}
+
+
+extension PCMensualCustomView {
+   /* override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let currentPoint = touch.location(in: self)
+            // do something with your currentPoint
+      
+         
+        }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let currentPoint = touch.location(in: self)
+            // do something with your currentPoint
+        
+            print(currentPoint)
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let currentPoint = touch.location(in: self)
+            // do something with your currentPoint
+           // print(currentPoint)
+        }
+    }*/
 }

@@ -77,34 +77,12 @@ class PCDiaCustomView: UIView {
         dibujar()
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first {
-            let currentPoint = touch.location(in: self)
-            // do something with your currentPoint
-            print(currentPoint)
-        }
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first {
-            let currentPoint = touch.location(in: self)
-            // do something with your currentPoint
-        }
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first {
-            let currentPoint = touch.location(in: self)
-            // do something with your currentPoint
-            print(currentPoint)
-        }
-    }
+   
     
     @objc func viewTapped() {
         let valor = (fila, columna)
         NotificationCenter.default.post(name: .dayDidTouchNotification, object: valor)
         self.delegate?.didTouched(fila: fila!, columna: columna!)
-        self.buttonAnimation()
     }
     
     func dibujar() {

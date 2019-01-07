@@ -21,6 +21,7 @@ struct PCMensualSelectionMode {
     static let singleSelection = 0
     static let doubleSelection = 1
     static let randomSelection = 2
+    static let dragSelection = 3
 }
 
 class PCMensualModel {
