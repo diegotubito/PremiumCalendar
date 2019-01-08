@@ -195,7 +195,7 @@ class PCMensualCustomView: UIView, PCMensualViewContract {
         
         view.fondoSeleccion.transform = CGAffineTransform(scaleX: 0, y: 0)
         
-        UIButton.animate(withDuration: 0.2, delay: 0.02 ,
+        UIButton.animate(withDuration: 0.2, delay: 0.02,
                          animations: {
                             view.fondoSeleccion.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         })
