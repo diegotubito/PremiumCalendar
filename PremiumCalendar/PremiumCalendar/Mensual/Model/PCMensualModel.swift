@@ -28,8 +28,10 @@ class PCMensualModel {
     var selectionMode : Int!
     var selectedItems : [Int]!
     
+    
     init(selectionMode: Int, selectedItems: [Int]) {
         self.selectionMode = selectionMode
         self.selectedItems = selectedItems
+ 
     }
 }

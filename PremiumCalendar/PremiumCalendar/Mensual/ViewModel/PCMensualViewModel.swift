@@ -9,8 +9,6 @@
 import UIKit
 
 class PCMensualViewModel: NSObject, PCMensualViewModelContract {
-  
-    
     var model: PCMensualModel
     var _view : PCMensualViewContract!
     

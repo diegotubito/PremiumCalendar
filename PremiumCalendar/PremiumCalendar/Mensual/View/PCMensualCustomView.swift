@@ -99,23 +99,51 @@ class PCMensualCustomView: UIView, PCMensualViewContract {
         for i in self.subviews {
             i.removeFromSuperview()
         }
-        listaViews.removeAll()
         
-        backgroundColor = fondoPlantilla
- 
-        let grilla = crearColumnas()
+        let stackGrilla = UIStackView()
+  
+        let diasDeLaSemana = dibujarDiasDeLaSemana()
+        stackGrilla.addArrangedSubview(diasDeLaSemana)
         
-        addSubview(grilla)
+        let cuerpo = dibujarCuerpo()
+        stackGrilla.addArrangedSubview(cuerpo)
         
-        grilla.translatesAutoresizingMaskIntoConstraints = false
+        stackGrilla.alignment = .fill
+        stackGrilla.distribution = .fill
+        stackGrilla.spacing = 0
+        stackGrilla.axis = .vertical
         
-        let a1 = NSLayoutConstraint(item: grilla, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 0)
-        let a2 = NSLayoutConstraint(item: grilla, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: 0)
-        let a3 = NSLayoutConstraint(item: grilla, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0)
-        let a4 = NSLayoutConstraint(item: grilla, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0)
+        addSubview(stackGrilla)
+        
+        stackGrilla.translatesAutoresizingMaskIntoConstraints = false
+        
+        let a1 = NSLayoutConstraint(item: stackGrilla, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 0)
+        let a2 = NSLayoutConstraint(item: stackGrilla, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: 0)
+        let a3 = NSLayoutConstraint(item: stackGrilla, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0)
+        let a4 = NSLayoutConstraint(item: stackGrilla, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0)
         self.addConstraints([a1, a2, a3, a4])
         
+        diasDeLaSemana.translatesAutoresizingMaskIntoConstraints = false
+        let d1 = NSLayoutConstraint(item: diasDeLaSemana, attribute: .leading, relatedBy: .equal, toItem: stackGrilla, attribute: .leading, multiplier: 1, constant: 0)
+        let d2 = NSLayoutConstraint(item: diasDeLaSemana, attribute: .trailing, relatedBy: .equal, toItem: stackGrilla, attribute: .trailing, multiplier: 1, constant: 0)
+        let d3 = NSLayoutConstraint(item: diasDeLaSemana, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 30)
+        stackGrilla.addConstraints([d1, d2, d3])
         
+        
+    }
+    
+    func dibujarDiasDeLaSemana() -> UIView {
+        let rectangulo = UIView(frame: CGRect.zero)
+        rectangulo.backgroundColor = UIColor.brown
+        
+        return rectangulo
+    }
+    
+    func dibujarCuerpo() -> UIView {
+        listaViews.removeAll()
+        backgroundColor = fondoPlantilla
+        let cuerpo = crearColumnas()
+        return cuerpo
     }
     
     func crearColumnas() -> UIStackView {

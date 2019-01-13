@@ -12,9 +12,6 @@ protocol PCMensualViewModelContract {
     init(withCustomView view: PCMensualViewContract)
     func selectedView(_ tuple : (Int, Int))
     var model : PCMensualModel {get set}
-
-    
-
 }
 
 protocol PCMensualViewContract {
