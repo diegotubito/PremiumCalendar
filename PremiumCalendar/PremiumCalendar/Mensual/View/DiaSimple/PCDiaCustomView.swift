@@ -25,6 +25,7 @@ class PCDiaCustomView: UIView {
     var colorLabelCentral = UIColor.white
     var fuenteLabelCentral: UIFont = UIFont.systemFont(ofSize: 12)
     var fondoSeleccion : UIImageView!
+    var textoLabelCentral : String!
     
     var delegate : PCDiaCustomViewDelegate?
       
@@ -120,7 +121,7 @@ class PCDiaCustomView: UIView {
     
     func dibujarLabelCentral() {
         labelCentral = UILabel()
-        labelCentral.text = String(columna + (fila*7))
+        labelCentral.text = textoLabelCentral
         labelCentral.textAlignment = .center
         labelCentral.textColor = colorLabelCentral
         labelCentral.font = fuenteLabelCentral

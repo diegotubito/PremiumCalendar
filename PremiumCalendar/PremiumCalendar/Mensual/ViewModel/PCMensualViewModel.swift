@@ -9,9 +9,11 @@
 import UIKit
 
 class PCMensualViewModel: NSObject, PCMensualViewModelContract {
+
+   
+   
     var model: PCMensualModel
     var _view : PCMensualViewContract!
-    
     
     required init(withCustomView view: PCMensualViewContract) {
         
@@ -20,7 +22,80 @@ class PCMensualViewModel: NSObject, PCMensualViewModelContract {
         let selectedItems : [Int] = []
         model = PCMensualModel(selectionMode: PCMensualSelectionMode.doubleSelection, selectedItems: selectedItems)
     
-          
+        model.construirNombreDias()
+   
+    }
+    
+    func getNameDay(index: Int) -> String {
+        return model.nombreDiasConstruidos[index]
+    }
+    
+    func getDayValues(fila: Int, columna: Int) -> PCMensualValores {
+        
+        
+        let i = columna + (fila*7)
+        let diaInicial = queDiaEmpiezaElMes(fecha: model.viewDate)
+        
+        /*
+        let y : Int = i - diaInicial + 2 + model.startingDay.raw
+        if y > 1 {
+            offset = -7
+        }
+       */
+        
+        let mesAnterior = Calendar.current.date(byAdding: .month, value: -1, to: model.viewDate)
+        let mesSiguiente = Calendar.current.date(byAdding: .month, value: 1, to: model.viewDate)
+        
+        let diasMaximoMesAnteriorEnPantalla = mesAnterior?.endDay()
+        let diasMaximoMesActualEnPantalla = model.viewDate!.endDay()
+        let diasMaximoMesSiguienteEnPantalla = mesSiguiente?.endDay()
+        
+        var x : Int = i - diaInicial + 2 + model.firstDay.raw
+        let valorEnCero = x - i
+        var offset = 0
+        
+        if valorEnCero > 1 {
+            offset = -7
+        }
+    
+        x = x + offset
+        
+    
+        
+        if x > 0 && x <= diasMaximoMesActualEnPantalla {
+            return PCMensualValores(fila: fila, columna: columna, antActSig: 0, dia: x)
+            
+        } else if x <= 0 {
+            return PCMensualValores(fila: fila, columna: columna, antActSig: -1, dia: (x + diasMaximoMesAnteriorEnPantalla!))
+        } else {
+            return PCMensualValores(fila: fila, columna: columna, antActSig: 1, dia: (x - diasMaximoMesActualEnPantalla))
+        }
+    }
+    
+    func getLabelColor(_ valor: PCMensualValores) -> UIColor {
+        if model.columnasOscurecidas.contains(valor.columna) {
+            return UIColor.lightGray
+        } else {
+            if valor.antActSig == 0 {
+                //mes actual
+                return UIColor.white
+            } else {
+                return UIColor.lightGray
+            }
+        }
+    }
+    
+    func getLabelFont(_ valor: PCMensualValores) -> UIFont {
+        if valor.antActSig == -1 {
+            //mes anterior
+            return UIFont.systemFont(ofSize: 12)
+        } else if valor.antActSig == 0 {
+            //mes actual
+            return UIFont.systemFont(ofSize: 15)
+        } else {
+            //mes siguiente
+            return UIFont.systemFont(ofSize: 12)
+        }
     }
     
  
@@ -77,4 +152,26 @@ class PCMensualViewModel: NSObject, PCMensualViewModelContract {
 }
 
 
-
+extension Date {
+    var dayName : String {
+        let valor = Calendar.current.component(.weekday, from: self)
+        return arrayNombreDias[valor]
+    }
+    
+    func startDay() -> Int {
+        let myCalendar = Calendar(identifier: .gregorian)
+        return myCalendar.component(.weekday, from: self)
+    }
+    
+    func endDay() -> Int {
+        let myCalendar = Calendar(identifier: .gregorian)
+        
+        // Calculate start and end of the current year (or month with `.month`):
+        let interval = myCalendar.dateInterval(of: .month, for: self)!
+        
+        // Compute difference in days:
+        let days = myCalendar.dateComponents([.day], from: interval.start, to: interval.end).day!
+        return days
+    }
+    
+}

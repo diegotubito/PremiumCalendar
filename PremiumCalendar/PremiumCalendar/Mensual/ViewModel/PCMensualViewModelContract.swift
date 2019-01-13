@@ -12,6 +12,10 @@ protocol PCMensualViewModelContract {
     init(withCustomView view: PCMensualViewContract)
     func selectedView(_ tuple : (Int, Int))
     var model : PCMensualModel {get set}
+    func getNameDay(index: Int) -> String
+    func getDayValues(fila: Int, columna: Int) -> PCMensualValores
+    func getLabelColor(_ valor: PCMensualValores) -> UIColor
+    func getLabelFont(_ valor: PCMensualValores) -> UIFont
 }
 
 protocol PCMensualViewContract {
@@ -20,3 +24,5 @@ protocol PCMensualViewContract {
  
     func showSelectedItems()
  }
+
+
