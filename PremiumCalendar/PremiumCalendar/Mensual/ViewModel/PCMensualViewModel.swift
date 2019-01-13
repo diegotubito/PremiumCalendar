@@ -9,21 +9,17 @@
 import UIKit
 
 class PCMensualViewModel: NSObject, PCMensualViewModelContract {
-
-   
-   
+     
     var model: PCMensualModel
     var _view : PCMensualViewContract!
     
     required init(withCustomView view: PCMensualViewContract) {
         
-        _view = view
-       
         let selectedItems : [Int] = []
         model = PCMensualModel(selectionMode: PCMensualSelectionMode.doubleSelection, selectedItems: selectedItems)
     
         model.construirNombreDias()
-   
+  
     }
     
     func getNameDay(index: Int) -> String {
@@ -35,14 +31,7 @@ class PCMensualViewModel: NSObject, PCMensualViewModelContract {
         
         let i = columna + (fila*7)
         let diaInicial = queDiaEmpiezaElMes(fecha: model.viewDate)
-        
-        /*
-        let y : Int = i - diaInicial + 2 + model.startingDay.raw
-        if y > 1 {
-            offset = -7
-        }
-       */
-        
+              
         let mesAnterior = Calendar.current.date(byAdding: .month, value: -1, to: model.viewDate)
         let mesSiguiente = Calendar.current.date(byAdding: .month, value: 1, to: model.viewDate)
         
@@ -72,31 +61,8 @@ class PCMensualViewModel: NSObject, PCMensualViewModelContract {
         }
     }
     
-    func getLabelColor(_ valor: PCMensualValores) -> UIColor {
-        if model.columnasOscurecidas.contains(valor.columna) {
-            return UIColor.lightGray
-        } else {
-            if valor.antActSig == 0 {
-                //mes actual
-                return UIColor.white
-            } else {
-                return UIColor.lightGray
-            }
-        }
-    }
+   
     
-    func getLabelFont(_ valor: PCMensualValores) -> UIFont {
-        if valor.antActSig == -1 {
-            //mes anterior
-            return UIFont.systemFont(ofSize: 12)
-        } else if valor.antActSig == 0 {
-            //mes actual
-            return UIFont.systemFont(ofSize: 15)
-        } else {
-            //mes siguiente
-            return UIFont.systemFont(ofSize: 12)
-        }
-    }
     
  
   

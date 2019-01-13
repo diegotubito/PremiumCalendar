@@ -19,7 +19,7 @@ class ViewController: UIViewController {
       //  Toast.show(message: "Premium Calendar", controller: self)
      
      
-        calendario = PCMensualCustomView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 200))
+        calendario = PCMensualCustomView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 250))
         calendario.colorLabelDia = UIColor.white
         view.addSubview(calendario)
  

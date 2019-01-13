@@ -10,6 +10,7 @@ import UIKit
 
 @IBDesignable
 class PCMensualCustomView: UIView, PCMensualViewContract {
+       
 
     var listaViews = [PCDiaCustomView]()
     
@@ -77,17 +78,17 @@ class PCMensualCustomView: UIView, PCMensualViewContract {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        inicializar()
+         inicializar()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-   
+        
         inicializar()
     }
     
     func inicializar() {
+     
          self.viewModel = PCMensualViewModel(withCustomView: self)
          self.dibujarGrilla()
     }
@@ -131,12 +132,45 @@ class PCMensualCustomView: UIView, PCMensualViewContract {
         })
 
     }
+    
+    func getLabelColor(_ valor: PCMensualValores) -> UIColor {
+        if viewModel.model.columnasOscurecidas.contains(valor.columna) {
+            return UIColor.lightGray
+        } else {
+            if valor.antActSig == 0 {
+                //mes actual
+                return UIColor.white
+            } else {
+                return UIColor.lightGray
+            }
+        }
+    }
+    
+    func getLabelFont(_ valor: PCMensualValores) -> UIFont {
+        if valor.antActSig == -1 {
+            //mes anterior
+            return UIFont.systemFont(ofSize: frame.height/20 * 0.8)
+        } else if valor.antActSig == 0 {
+            //mes actual
+            return UIFont.systemFont(ofSize: frame.height/20)
+        } else {
+            //mes siguiente
+            return UIFont.systemFont(ofSize: frame.height/20 * 0.8)
+        }
+    }
+    
 }
 
 
 extension PCMensualCustomView: PCDiaCustomViewDelegate {
     func didTouched(fila: Int, columna: Int) {
+        
+        let valores = viewModel.getDayValues(fila: fila, columna: columna)
+        
         viewModel.selectedView((fila, columna))
+        
+        
+        print(valores.dia)
     }
   
 }
