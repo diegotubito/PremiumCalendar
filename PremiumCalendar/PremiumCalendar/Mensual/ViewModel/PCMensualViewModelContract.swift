@@ -14,6 +14,10 @@ protocol PCMensualViewModelContract {
     var model : PCMensualModel {get set}
     func getNameDay(index: Int) -> String
     func getDayValues(fila: Int, columna: Int) -> PCMensualValores
+    
+    
+    func avanzarMes()
+    func retrocederMes()
  }
 
 protocol PCMensualViewContract {
@@ -21,7 +25,7 @@ protocol PCMensualViewContract {
     func deselectAll()
     func getLabelFont(_ valor: PCMensualValores) -> UIFont
     func getLabelColor(_ valor: PCMensualValores) -> UIColor
-
+    func updateDays()
    
 
     func showSelectedItems()

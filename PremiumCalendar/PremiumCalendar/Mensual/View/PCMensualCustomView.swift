@@ -11,7 +11,10 @@ import UIKit
 @IBDesignable
 class PCMensualCustomView: UIView, PCMensualViewContract {
        
-
+    var factorDimension : CGFloat = 1.0
+    var tamañoHeader : CGFloat = 0
+    var tamañoFontDiaDeLaSemana : CGFloat = 0
+    
     var listaViews = [PCDiaCustomView]()
     
     var viewModel : PCMensualViewModelContract!
@@ -88,9 +91,26 @@ class PCMensualCustomView: UIView, PCMensualViewContract {
     }
     
     func inicializar() {
-     
-         self.viewModel = PCMensualViewModel(withCustomView: self)
-         self.dibujarGrilla()
+        let screenSize = UIScreen.main.bounds
+        self.factorDimension = (frame.width + frame.height) / (screenSize.width + screenSize.height)
+    
+        self.viewModel = PCMensualViewModel(withCustomView: self)
+        self.dibujarGrilla()
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeftHandle))
+        swipeLeft.direction = .left
+        addGestureRecognizer(swipeLeft)
+ 
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeRightHandle))
+        swipeRight.direction = .right
+        addGestureRecognizer(swipeRight)
+    }
+    
+    @objc func swipeLeftHandle() {
+        viewModel.avanzarMes()
+    }
+    @objc func swipeRightHandle() {
+        viewModel.retrocederMes()
     }
     
    
@@ -159,6 +179,49 @@ class PCMensualCustomView: UIView, PCMensualViewContract {
         }
     }
     
+    func updateDays() {
+        for i in 0...41 {
+            let atributos = getAttributes(i: i)
+            listaViews[i].labelCentral.text = String(atributos.dia)
+            listaViews[i].colorLabelCentral = getLabelColor(atributos)
+            listaViews[i].fuenteLabelCentral = getLabelFont(atributos)
+            
+            
+        }
+    }
+    
+    func getAttributes(i: Int) -> PCMensualValores {
+
+        let diaInicial = queDiaEmpiezaElMes(fecha: viewModel.model.viewDate)
+        
+        let mesAnterior = Calendar.current.date(byAdding: .month, value: -1, to: viewModel.model.viewDate)
+        let mesSiguiente = Calendar.current.date(byAdding: .month, value: 1, to: viewModel.model.viewDate)
+        
+        let diasMaximoMesAnteriorEnPantalla = mesAnterior?.endDay()
+        let diasMaximoMesActualEnPantalla = viewModel.model.viewDate!.endDay()
+        let diasMaximoMesSiguienteEnPantalla = mesSiguiente?.endDay()
+        
+        var x : Int = i - diaInicial + 2 + viewModel.model.firstDay.raw
+        let valorEnCero = x - i
+        var offset = 0
+        
+        if valorEnCero > 1 {
+            offset = -7
+        }
+        
+        x = x + offset
+        
+        
+        
+        if x > 0 && x <= diasMaximoMesActualEnPantalla {
+            return PCMensualValores(fila: 0, columna: 0, antActSig: 0, dia: x)
+            
+        } else if x <= 0 {
+            return PCMensualValores(fila: 0, columna: 0, antActSig: -1, dia: (x + diasMaximoMesAnteriorEnPantalla!))
+        } else {
+            return PCMensualValores(fila: 0, columna: 0, antActSig: 1, dia: (x - diasMaximoMesActualEnPantalla))
+        }
+    }
 }
 
 

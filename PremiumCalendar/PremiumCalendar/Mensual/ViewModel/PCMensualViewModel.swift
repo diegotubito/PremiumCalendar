@@ -9,11 +9,13 @@
 import UIKit
 
 class PCMensualViewModel: NSObject, PCMensualViewModelContract {
+  
      
     var model: PCMensualModel
     var _view : PCMensualViewContract!
     
     required init(withCustomView view: PCMensualViewContract) {
+        _view = view
         
         let selectedItems : [Int] = []
         model = PCMensualModel(selectionMode: PCMensualSelectionMode.doubleSelection, selectedItems: selectedItems)
@@ -61,11 +63,6 @@ class PCMensualViewModel: NSObject, PCMensualViewModelContract {
         }
     }
     
-   
-    
-    
- 
-  
     func selectedView(_ tuple: (Int, Int)) {
         let index = tuple.1 + (tuple.0 * 7)
         
@@ -114,11 +111,28 @@ class PCMensualViewModel: NSObject, PCMensualViewModelContract {
         }
     }
     
+    func avanzarMes() {
+        model.viewDate.sumarMes(valor: 1)
+        _view.updateDays()
+    }
+    
+    func retrocederMes() {
+        model.viewDate.sumarMes(valor: -1)
+        _view.updateDays()
+        
+    }
+    
     
 }
 
 
 extension Date {
+    mutating func sumarMes(valor: Int) {
+        let myCalendar = Calendar(identifier: .gregorian)
+        self = myCalendar.date(byAdding: .month, value: valor, to: self)!
+
+    }
+    
     var dayName : String {
         let valor = Calendar.current.component(.weekday, from: self)
         return arrayNombreDias[valor]

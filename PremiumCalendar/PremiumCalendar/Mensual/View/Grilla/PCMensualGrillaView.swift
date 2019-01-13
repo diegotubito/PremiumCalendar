@@ -10,6 +10,8 @@ import UIKit
 
 extension PCMensualCustomView {
     func dibujarGrilla() {
+        tamañoHeader = (frame.height / 1.5) * factorDimension
+        tamañoFontDiaDeLaSemana = frame.height/12 * factorDimension
         
         for i in self.subviews {
             i.removeFromSuperview()
@@ -44,13 +46,13 @@ extension PCMensualCustomView {
         diasDeLaSemana.translatesAutoresizingMaskIntoConstraints = false
         let d1 = NSLayoutConstraint(item: diasDeLaSemana, attribute: .leading, relatedBy: .equal, toItem: stackGrilla, attribute: .leading, multiplier: 1, constant: 0)
         let d2 = NSLayoutConstraint(item: diasDeLaSemana, attribute: .trailing, relatedBy: .equal, toItem: stackGrilla, attribute: .trailing, multiplier: 1, constant: 0)
-        let d3 = NSLayoutConstraint(item: diasDeLaSemana, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: self.frame.height/10)
+        let d3 = NSLayoutConstraint(item: diasDeLaSemana, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: (tamañoFontDiaDeLaSemana)*1.5 )
         stackGrilla.addConstraints([d1, d2, d3])
         
         header.translatesAutoresizingMaskIntoConstraints = false
         let h1 = NSLayoutConstraint(item: header, attribute: .leading, relatedBy: .equal, toItem: stackGrilla, attribute: .leading, multiplier: 1, constant: 0)
         let h2 = NSLayoutConstraint(item: header, attribute: .trailing, relatedBy: .equal, toItem: stackGrilla, attribute: .trailing, multiplier: 1, constant: 0)
-        let h3 = NSLayoutConstraint(item: header, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: self.frame.height/3)
+        let h3 = NSLayoutConstraint(item: header, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: tamañoHeader)
         stackGrilla.addConstraints([h1, h2, h3])
         
         
@@ -64,6 +66,7 @@ extension PCMensualCustomView {
     }
     
     func dibujarDiasDeLaSemana() -> UIView {
+        
         let rectangulo = UIView(frame: CGRect.zero)
         rectangulo.backgroundColor = UIColor.brown
         
@@ -75,6 +78,7 @@ extension PCMensualCustomView {
         
         for i in 0...6 {
             let lab = UILabel()
+            lab.font = UIFont.systemFont(ofSize: tamañoFontDiaDeLaSemana)
             lab.text = viewModel.getNameDay(index: i)
             lab.textAlignment = .center
             containerStack.addArrangedSubview(lab)
