@@ -126,13 +126,13 @@ extension PCMensualCustomView {
         
         for index in 0...6 {
             let nuevaView = PCDiaCustomView(frame: CGRect())
-            let dayValues = viewModel.getDayValues(fila: fila, columna: index)
-            nuevaView.textoLabelCentral = String(dayValues.dia)
+            let atributos = getDayAttibutes(fecha: viewModel.model.viewDate, fila: fila, columna: index)
+            nuevaView.textoLabelCentral = String(atributos.numberDay)
             
             nuevaView.columna = index
             nuevaView.fila = fila
-            nuevaView.colorLabelCentral = getLabelColor(dayValues)
-            nuevaView.fuenteLabelCentral = getLabelFont(dayValues)
+            nuevaView.colorLabelCentral = atributos.labelCentralColor
+            nuevaView.fuenteLabelCentral = atributos.labelCentralFont
             nuevaView.bordeAncho = bordeAncho
             nuevaView.bordeColor = bordeColor
             nuevaView.fondoDia = fondoDia

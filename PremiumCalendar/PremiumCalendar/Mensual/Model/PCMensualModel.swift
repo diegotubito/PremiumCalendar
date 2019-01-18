@@ -87,17 +87,14 @@ class PCMensualModel {
 
 
 
-class PCMensualValores {
-    var fila : Int
-    var columna : Int
-    var antActSig : Int
-    var dia : Int
-    
-    init(fila: Int, columna: Int, antActSig: Int, dia: Int) {
-        self.fila = fila
-        self.columna = columna
-        self.antActSig = antActSig
-        self.dia = dia
-    }
+class PCMensualDayAttribute {
+    var fila : Int = 0
+    var columna : Int = 0
+    var labelCentralFont : UIFont = UIFont()
+    var labelCentralColor : UIColor = UIColor()
+    var isSelected : Bool = false
+    var isDotted : Bool = false
+    var numberDay : Int = 0
+    var antActSig = 0
 }
 

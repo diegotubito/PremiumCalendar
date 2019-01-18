@@ -153,53 +153,30 @@ class PCMensualCustomView: UIView, PCMensualViewContract {
 
     }
     
-    func getLabelColor(_ valor: PCMensualValores) -> UIColor {
-        if viewModel.model.columnasOscurecidas.contains(valor.columna) {
-            return UIColor.lightGray
-        } else {
-            if valor.antActSig == 0 {
-                //mes actual
-                return UIColor.white
-            } else {
-                return UIColor.lightGray
-            }
-        }
-    }
-    
-    func getLabelFont(_ valor: PCMensualValores) -> UIFont {
-        if valor.antActSig == -1 {
-            //mes anterior
-            return UIFont.systemFont(ofSize: frame.height/20 * 0.8)
-        } else if valor.antActSig == 0 {
-            //mes actual
-            return UIFont.systemFont(ofSize: frame.height/20)
-        } else {
-            //mes siguiente
-            return UIFont.systemFont(ofSize: frame.height/20 * 0.8)
-        }
-    }
+   
     
     func updateDays() {
-        for i in 0...41 {
-            let atributos = getAttributes(i: i)
-            listaViews[i].labelCentral.text = String(atributos.dia)
-            listaViews[i].colorLabelCentral = getLabelColor(atributos)
-            listaViews[i].fuenteLabelCentral = getLabelFont(atributos)
-            
-            
+        
+        for fila in 0...5 {
+            for columna in 0...6 {
+                let atributos = getDayAttibutes(fecha: viewModel.model.viewDate, fila: fila, columna: columna)
+                let i = columna + (fila * 7)
+                listaViews[i].labelCentral.text = String(atributos.numberDay)
+                listaViews[i].colorLabelCentral = atributos.labelCentralColor
+                listaViews[i].fuenteLabelCentral = atributos.labelCentralFont
+            }
         }
+       
     }
     
-    func getAttributes(i: Int) -> PCMensualValores {
-
-        let diaInicial = queDiaEmpiezaElMes(fecha: viewModel.model.viewDate)
+    func getDayAttibutes(fecha: Date, fila: Int, columna: Int) -> PCMensualDayAttribute {
+        let i = columna + (fila*7)
+        let diaInicial = queDiaEmpiezaElMes(fecha: fecha)
         
-        let mesAnterior = Calendar.current.date(byAdding: .month, value: -1, to: viewModel.model.viewDate)
-        let mesSiguiente = Calendar.current.date(byAdding: .month, value: 1, to: viewModel.model.viewDate)
+        let mesAnterior = Calendar.current.date(byAdding: .month, value: -1, to: fecha)
         
         let diasMaximoMesAnteriorEnPantalla = mesAnterior?.endDay()
-        let diasMaximoMesActualEnPantalla = viewModel.model.viewDate!.endDay()
-        let diasMaximoMesSiguienteEnPantalla = mesSiguiente?.endDay()
+        let diasMaximoMesActualEnPantalla = fecha.endDay()
         
         var x : Int = i - diaInicial + 2 + viewModel.model.firstDay.raw
         let valorEnCero = x - i
@@ -212,28 +189,56 @@ class PCMensualCustomView: UIView, PCMensualViewContract {
         x = x + offset
         
         
+        let atributos = PCMensualDayAttribute()
+        atributos.fila = fila
+        atributos.columna = columna
         
         if x > 0 && x <= diasMaximoMesActualEnPantalla {
-            return PCMensualValores(fila: 0, columna: 0, antActSig: 0, dia: x)
+            atributos.antActSig = 0
+            atributos.labelCentralFont = UIFont.systemFont(ofSize: frame.height/20)
+            
             
         } else if x <= 0 {
-            return PCMensualValores(fila: 0, columna: 0, antActSig: -1, dia: (x + diasMaximoMesAnteriorEnPantalla!))
+            atributos.antActSig = 1
+            x = x + diasMaximoMesAnteriorEnPantalla!
+            atributos.labelCentralFont = UIFont.systemFont(ofSize: frame.height/20 * 0.3)
+            
         } else {
-            return PCMensualValores(fila: 0, columna: 0, antActSig: 1, dia: (x - diasMaximoMesActualEnPantalla))
+            atributos.antActSig = -1
+            x = x - diasMaximoMesActualEnPantalla
+            atributos.labelCentralFont = UIFont.systemFont(ofSize: frame.height/20 * 0.3)
+            
+        }
+        
+        
+        atributos.labelCentralColor = getLabelColor(atributos)
+        atributos.numberDay = x
+        
+        
+        return atributos
+    }
+    
+    func getLabelColor(_ valor: PCMensualDayAttribute) -> UIColor {
+        if viewModel.model.columnasOscurecidas.contains(valor.columna) {
+            return UIColor.lightGray
+        } else {
+            if valor.antActSig == 0 {
+                //mes actual
+                return UIColor.white
+            } else {
+                return UIColor.lightGray
+            }
         }
     }
+    
+    
 }
 
 
 extension PCMensualCustomView: PCDiaCustomViewDelegate {
     func didTouched(fila: Int, columna: Int) {
         
-        let valores = viewModel.getDayValues(fila: fila, columna: columna)
-        
         viewModel.selectedView((fila, columna))
-        
-        
-        print(valores.dia)
     }
   
 }

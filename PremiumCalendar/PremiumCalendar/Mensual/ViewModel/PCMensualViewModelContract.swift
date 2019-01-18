@@ -13,8 +13,7 @@ protocol PCMensualViewModelContract {
     func selectedView(_ tuple : (Int, Int))
     var model : PCMensualModel {get set}
     func getNameDay(index: Int) -> String
-    func getDayValues(fila: Int, columna: Int) -> PCMensualValores
-    
+
     
     func avanzarMes()
     func retrocederMes()
@@ -23,10 +22,9 @@ protocol PCMensualViewModelContract {
 protocol PCMensualViewContract {
     func updateView()
     func deselectAll()
-    func getLabelFont(_ valor: PCMensualValores) -> UIFont
-    func getLabelColor(_ valor: PCMensualValores) -> UIColor
     func updateDays()
-   
+    func getDayAttibutes(fecha: Date, fila: Int, columna: Int) -> PCMensualDayAttribute
+    
 
     func showSelectedItems()
 }

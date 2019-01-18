@@ -9,6 +9,8 @@
 import UIKit
 
 class PCMensualViewModel: NSObject, PCMensualViewModelContract {
+    
+    
   
      
     var model: PCMensualModel
@@ -28,40 +30,6 @@ class PCMensualViewModel: NSObject, PCMensualViewModelContract {
         return model.nombreDiasConstruidos[index]
     }
     
-    func getDayValues(fila: Int, columna: Int) -> PCMensualValores {
-        
-        
-        let i = columna + (fila*7)
-        let diaInicial = queDiaEmpiezaElMes(fecha: model.viewDate)
-              
-        let mesAnterior = Calendar.current.date(byAdding: .month, value: -1, to: model.viewDate)
-        let mesSiguiente = Calendar.current.date(byAdding: .month, value: 1, to: model.viewDate)
-        
-        let diasMaximoMesAnteriorEnPantalla = mesAnterior?.endDay()
-        let diasMaximoMesActualEnPantalla = model.viewDate!.endDay()
-        let diasMaximoMesSiguienteEnPantalla = mesSiguiente?.endDay()
-        
-        var x : Int = i - diaInicial + 2 + model.firstDay.raw
-        let valorEnCero = x - i
-        var offset = 0
-        
-        if valorEnCero > 1 {
-            offset = -7
-        }
-    
-        x = x + offset
-        
-    
-        
-        if x > 0 && x <= diasMaximoMesActualEnPantalla {
-            return PCMensualValores(fila: fila, columna: columna, antActSig: 0, dia: x)
-            
-        } else if x <= 0 {
-            return PCMensualValores(fila: fila, columna: columna, antActSig: -1, dia: (x + diasMaximoMesAnteriorEnPantalla!))
-        } else {
-            return PCMensualValores(fila: fila, columna: columna, antActSig: 1, dia: (x - diasMaximoMesActualEnPantalla))
-        }
-    }
     
     func selectedView(_ tuple: (Int, Int)) {
         let index = tuple.1 + (tuple.0 * 7)
@@ -113,11 +81,14 @@ class PCMensualViewModel: NSObject, PCMensualViewModelContract {
     
     func avanzarMes() {
         model.viewDate.sumarMes(valor: 1)
+        print(model.viewDate)
         _view.updateDays()
     }
     
     func retrocederMes() {
         model.viewDate.sumarMes(valor: -1)
+        print(model.viewDate)
+        
         _view.updateDays()
         
     }
