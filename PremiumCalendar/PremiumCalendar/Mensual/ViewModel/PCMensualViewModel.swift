@@ -9,9 +9,21 @@
 import UIKit
 
 class PCMensualViewModel: NSObject, PCMensualViewModelContract {
+    func getYear() -> Int {
+        let año = Calendar.current.component(.year, from: model.viewDate)
+        
+        return año
+
+    }
+    
+    
+    func getMonth() -> Int {
+        let mes = Calendar.current.component(.month, from: model.viewDate)
+        return mes
+    }
+    
     func getMonthName() -> String {
         let mes = Calendar.current.component(.month, from: model.viewDate)
-        
         return MESES[mes]!
     }
     
@@ -88,12 +100,44 @@ class PCMensualViewModel: NSObject, PCMensualViewModelContract {
     
     func avanzarMes() {
         model.viewDate.sumarMes(valor: 1)
-        _view.updateDays()
+        
+        _view.hideYear {
+            self._view.setYearTitle()
+            self._view.showYear {}
+        }
+        
+        _view.hideMesIzquierda {
+            self._view.setMonthTitle()
+            self._view.showMesDerecha {}
+        }
+        
+        _view.hideCuerpoIzquierda {
+            self._view.updateDays()
+            self._view.showCuerpoDerecha {
+                
+            }
+        }
     }
     
     func retrocederMes() {
         model.viewDate.sumarMes(valor: -1)
-        _view.updateDays()
+        
+        _view.hideYear {
+            self._view.setYearTitle()
+            self._view.showYear {}
+        }
+        
+        _view.hideMesDerecha {
+            self._view.setMonthTitle()
+            self._view.showMesIzquierda {}
+        }
+    
+        _view.hideCuerpoDerecha {
+            self._view.updateDays()
+            self._view.showCuerpoIzquierda {
+                
+            }
+        }
         
     }
     
@@ -102,34 +146,3 @@ class PCMensualViewModel: NSObject, PCMensualViewModelContract {
 }
 
 
-extension Date {
-    mutating func sumarMes(valor: Int) {
-        let myCalendar = Calendar(identifier: .gregorian)
-        self = myCalendar.date(byAdding: .month, value: valor, to: self)!
-
-    }
-    
-    var dayName : String {
-        let valor = Calendar.current.component(.weekday, from: self)
-        return arrayNombreDias[valor]
-    }
-    
-    func startDay() -> Int {
-        let myCalendar = Calendar(identifier: .gregorian)
-        return myCalendar.component(.weekday, from: self)
-    }
-    
-    func endDay() -> Int {
-        let myCalendar = Calendar(identifier: .gregorian)
-        
-        // Calculate start and end of the current year (or month with `.month`):
-        let interval = myCalendar.dateInterval(of: .month, for: self)!
-        
-        // Compute difference in days:
-        let days = myCalendar.dateComponents([.day], from: interval.start, to: interval.end).day!
-        return days
-    }
-    
-    
-    
-}

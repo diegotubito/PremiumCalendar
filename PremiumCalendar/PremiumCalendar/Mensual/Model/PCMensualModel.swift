@@ -50,7 +50,11 @@ class PCMensualModel {
     var selectedItems : [Int]!
     var firstDay : PCMensualDias!
     var selectedDate : Date!
+    var selectedDates : [Int : String] = [:]
+    
     var viewDate : Date!
+
+    
     var columnasOscurecidas = [0, 6]
     
     var nombreDiasConstruidos = [String]()

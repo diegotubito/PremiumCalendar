@@ -96,7 +96,7 @@ extension UIView {
      
      - parameter duration: animation duration
      */
-    func fadeOut(duration: TimeInterval = 0.2, completed: @escaping () ->()) {
+    func fadeOut(duration: TimeInterval = 0.5, completed: @escaping () ->()) {
         self.alpha = 1
         UIView.animate(withDuration: duration, delay: 0.0, options: [.transitionCrossDissolve], animations: { () -> Void in
             self.alpha = 0
@@ -110,7 +110,7 @@ extension UIView {
      
      - parameter duration: animation duration
      */
-    func fadeIn(duration: TimeInterval = 0.2, completed: @escaping () ->()) {
+    func fadeIn(duration: TimeInterval = 0.5, completed: @escaping () ->()) {
         self.alpha = 0
         UIView.animate(withDuration: duration, delay: 0.0, options: [.transitionCrossDissolve], animations: { () -> Void in
             self.alpha = 1
@@ -189,7 +189,7 @@ extension UIView {
     }
     
     
-    func slide(fromX: CGFloat?, toX: CGFloat) {
+    func slide(fromX: CGFloat?, toX: CGFloat, duration: TimeInterval) {
           
         let yPosition = self.frame.origin.y
         
@@ -200,13 +200,13 @@ extension UIView {
         if fromX != nil {
             self.frame = CGRect(x: fromX!, y: yPosition, width: width, height: height)
         }
-        UIView.animate(withDuration: 0.2, delay: 0.0, options: [.curveEaseInOut], animations: {
+        UIView.animate(withDuration: duration, delay: 0.0, options: [.curveEaseInOut], animations: {
             self.frame = CGRect(x: toX, y: yPosition, width: width, height: height)
             
         })
     }
     
-    func slide(fromX: CGFloat?, toX: CGFloat, completion: @escaping () -> Void) {
+    func slide(fromX: CGFloat?, toX: CGFloat, duration: TimeInterval, completion: @escaping () -> Void) {
         
         let yPosition = self.frame.origin.y
         
@@ -217,7 +217,7 @@ extension UIView {
             self.frame = CGRect(x: fromX!, y: yPosition, width: width, height: height)
         }
 
-        UIView.animate(withDuration: 0.2, delay: 0.0, options: [.curveEaseInOut], animations: {
+        UIView.animate(withDuration: duration, delay: 0.0, options: [.curveEaseInOut], animations: {
             self.frame = CGRect(x: toX, y: yPosition, width: width, height: height)
             
         }) { (termino) in

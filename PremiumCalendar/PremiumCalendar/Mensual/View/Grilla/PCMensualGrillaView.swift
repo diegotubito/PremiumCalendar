@@ -10,25 +10,16 @@ import UIKit
 
 extension PCMensualCustomView {
     func dibujarGrilla() {
-        tamañoHeader = (frame.height / 1.5) * factorDimension
-        tamañoFontDiaDeLaSemana = frame.height/12 * factorDimension
-        tamañoFontMes = tamañoHeader/2.3
+        altoHeader = (frame.height / 1.5) * factorDimension
+        altoFontDia = frame.height/12 * factorDimension
+        altoFontMes = altoHeader/2.3
+        altoFontAño = altoHeader/5
         
         for i in self.subviews {
             i.removeFromSuperview()
         }
         
         let stackGrilla = UIStackView()
-        
-        let monthView = dibujarMonthView()
-        stackGrilla.addArrangedSubview(monthView)
-       
-        let diasDeLaSemana = dibujarDiasDeLaSemana()
-        stackGrilla.addArrangedSubview(diasDeLaSemana)
-        
-        let cuerpo = dibujarCuerpo()
-        stackGrilla.addArrangedSubview(cuerpo)
-        
         stackGrilla.alignment = .fill
         stackGrilla.distribution = .fill
         stackGrilla.spacing = 0
@@ -44,82 +35,113 @@ extension PCMensualCustomView {
         let a4 = NSLayoutConstraint(item: stackGrilla, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0)
         self.addConstraints([a1, a2, a3, a4])
         
+        addMonthView(stackGrilla: stackGrilla)
+        addYearView(stackGrilla: stackGrilla)
+        addHeaderDaysView(stackGrilla: stackGrilla)
+        addDiasView(stackGrilla: stackGrilla)
+      
+        
+    }
+    func addDiasView(stackGrilla: UIStackView) {
+        cuerpo = dibujarCuerpo()
+        stackGrilla.addArrangedSubview(cuerpo)
+        
+    }
+    func addHeaderDaysView(stackGrilla: UIStackView) {
+        let diasDeLaSemana = dibujarDiasDeLaSemana()
+        stackGrilla.addArrangedSubview(diasDeLaSemana)
+        
+        
         diasDeLaSemana.translatesAutoresizingMaskIntoConstraints = false
         let d1 = NSLayoutConstraint(item: diasDeLaSemana, attribute: .leading, relatedBy: .equal, toItem: stackGrilla, attribute: .leading, multiplier: 1, constant: 0)
         let d2 = NSLayoutConstraint(item: diasDeLaSemana, attribute: .trailing, relatedBy: .equal, toItem: stackGrilla, attribute: .trailing, multiplier: 1, constant: 0)
-        let d3 = NSLayoutConstraint(item: diasDeLaSemana, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: (tamañoFontDiaDeLaSemana)*1.5 )
+        let d3 = NSLayoutConstraint(item: diasDeLaSemana, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: (altoFontDia)*1.5 )
         stackGrilla.addConstraints([d1, d2, d3])
+    }
+    func addMonthView(stackGrilla: UIStackView) {
+        let monthView = dibujarMonthView()
+        stackGrilla.addArrangedSubview(monthView)
         
         monthView.translatesAutoresizingMaskIntoConstraints = false
         let h1 = NSLayoutConstraint(item: monthView, attribute: .leading, relatedBy: .equal, toItem: stackGrilla, attribute: .leading, multiplier: 1, constant: 0)
         let h2 = NSLayoutConstraint(item: monthView, attribute: .trailing, relatedBy: .equal, toItem: stackGrilla, attribute: .trailing, multiplier: 1, constant: 0)
-        let h3 = NSLayoutConstraint(item: monthView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: tamañoHeader)
+        let h3 = NSLayoutConstraint(item: monthView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: altoHeader)
         stackGrilla.addConstraints([h1, h2, h3])
-       
+
     }
     
-    func dibujarMonthView() -> UIView{
+    func addYearView(stackGrilla: UIStackView) {
+        let year = UIView(frame: CGRect.zero)
+        year.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
+        
+        year.layer.cornerRadius = altoHeader/10
+        year.layer.masksToBounds = true
+        stackGrilla.addSubview(year)
+        
+        year.translatesAutoresizingMaskIntoConstraints = false
+        let y1 = NSLayoutConstraint(item: year, attribute: .top, relatedBy: .equal, toItem: stackGrilla, attribute: .top, multiplier: 1, constant: 0)
+        let y4 = NSLayoutConstraint(item: year, attribute: .trailing, relatedBy: .equal, toItem: stackGrilla, attribute: .trailing, multiplier: 1, constant: 0)
+        let y2 = NSLayoutConstraint(item: year, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: self.frame.width/3)
+        let y3 = NSLayoutConstraint(item: year, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: altoHeader/2)
+        stackGrilla.addConstraints([y1, y2, y3, y4])
+        
+        yearTitle.text = String(viewModel.getYear())
+        yearTitle.textColor = UIColor.lightGray
+        yearTitle.font = UIFont.systemFont(ofSize: altoFontAño)
+        year.addSubview(yearTitle)
+        
+        yearTitle.translatesAutoresizingMaskIntoConstraints = false
+        let c1 = NSLayoutConstraint(item: yearTitle, attribute: .centerY, relatedBy: .equal, toItem: year, attribute: .centerY, multiplier: 1, constant: 0)
+        let c2 = NSLayoutConstraint(item: yearTitle, attribute: .centerX, relatedBy: .equal, toItem: year, attribute: .centerX, multiplier: 1, constant: 0)
+        year.addConstraints([c1,c2])
+        
+        
+    }
+    
+    func dibujarMonthView() -> UIView {
         let rectangulo = UIView(frame: CGRect.zero)
         rectangulo.backgroundColor = UIColor.black
-        
-        let myPath = CGMutablePath()
-        let xInicial = rectangulo.frame.width - (rectangulo.frame.width/3)
-        let puntoInicial = CGPoint(x: rectangulo.frame.width, y: 0)
-        myPath.move(to: puntoInicial)
-        
-        
-        myPath.addLine(to: CGPoint(x: rectangulo.frame.width, y: rectangulo.frame.height))
-        myPath.addLine(to: CGPoint(x: rectangulo.frame.width, y: 0))
-        myPath.closeSubpath()
-        
-        
-        
-        let layer = CAShapeLayer()
-        layer.path = myPath
-            //UIBezierPath(roundedRect: CGRect(x: 64, y: 64, width: 160, height: 160), cornerRadius: 50).cgPath
-        layer.fillColor = UIColor.red.cgColor
-        layer.strokeColor = UIColor.white.cgColor
-        rectangulo.layer.addSublayer(layer)
-        
   
         monthTitle.text = viewModel.getMonthName()
-        monthTitle.textColor = UIColor.white
-        monthTitle.font = UIFont.systemFont(ofSize: tamañoFontMes)
+        monthTitle.textColor = UIColor.lightGray
+        monthTitle.font = UIFont.systemFont(ofSize: altoFontMes)
         rectangulo.addSubview(monthTitle)
         
         monthTitle.translatesAutoresizingMaskIntoConstraints = false
         let c1 = NSLayoutConstraint(item: monthTitle, attribute: .left, relatedBy: .equal, toItem: rectangulo, attribute: .left, multiplier: 1, constant: 16)
-        let c2 = NSLayoutConstraint(item: monthTitle, attribute: .top, relatedBy: .equal, toItem: rectangulo, attribute: .top, multiplier: 1, constant: 16)
+        let c2 = NSLayoutConstraint(item: monthTitle, attribute: .centerY, relatedBy: .equal, toItem: rectangulo, attribute: .centerY, multiplier: 1, constant: 0)
         rectangulo.addConstraints([c1,c2])
         
         
         return rectangulo
     }
     
-    func dibujarYearView() -> UIView{
-        let rectangulo = UIView(frame: CGRect.zero)
-        rectangulo.backgroundColor = UIColor.darkGray.withAlphaComponent(0.3)
+    func dibujarPathYearView(container: UIView) {
+       
+        let ancho = container.frame.width
+        let alto = container.frame.size.height
+         
+        let myPath = CGMutablePath()
+        let puntoInicial = CGPoint(x: ancho - ancho/3, y: 0)
+        myPath.move(to: puntoInicial)
+        myPath.addQuadCurve(to: CGPoint(x: ancho, y: alto/2), control: CGPoint(x: ancho - alto, y: alto/2))
         
+        myPath.addLine(to: CGPoint(x: ancho, y: 0))
+        myPath.closeSubpath()
         
-        yearTitle.text = viewModel.getMonthName()
-        yearTitle.textColor = UIColor.white
-        yearTitle.font = UIFont.systemFont(ofSize: tamañoFontMes)
-        rectangulo.addSubview(yearTitle)
-        
-        yearTitle.translatesAutoresizingMaskIntoConstraints = false
-        let c1 = NSLayoutConstraint(item: yearTitle, attribute: .left, relatedBy: .equal, toItem: rectangulo, attribute: .left, multiplier: 1, constant: 16)
-        let c2 = NSLayoutConstraint(item: yearTitle, attribute: .top, relatedBy: .equal, toItem: rectangulo, attribute: .top, multiplier: 1, constant: 16)
-        rectangulo.addConstraints([c1,c2])
-        
-        
-        return rectangulo
+        let layer = CAShapeLayer()
+        layer.path = myPath
+        //UIBezierPath(roundedRect: CGRect(x: 64, y: 64, width: 160, height: 160), cornerRadius: 50).cgPath
+        layer.fillColor = UIColor.blue.withAlphaComponent(0.5).cgColor
+        layer.strokeColor = UIColor.white.cgColor
+        container.layer.addSublayer(layer)
     }
  
     
     func dibujarDiasDeLaSemana() -> UIView {
         
         let rectangulo = UIView(frame: CGRect.zero)
-        rectangulo.backgroundColor = UIColor.brown
+        rectangulo.backgroundColor = UIColor.gray
         
         let containerStack = UIStackView()
         containerStack.alignment = .fill
@@ -129,7 +151,7 @@ extension PCMensualCustomView {
         
         for i in 0...6 {
             let lab = UILabel()
-            lab.font = UIFont.systemFont(ofSize: tamañoFontDiaDeLaSemana)
+            lab.font = UIFont.systemFont(ofSize: altoFontDia)
             lab.text = viewModel.getNameDay(index: i)
             lab.textAlignment = .center
             containerStack.addArrangedSubview(lab)

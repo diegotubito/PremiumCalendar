@@ -10,15 +10,23 @@ import UIKit
 
 @IBDesignable
 class PCMensualCustomView: UIView, PCMensualViewContract {
+   
+    
+   
+    
+   
+   
        
     var factorDimension : CGFloat = 1.0
-    var tamañoHeader : CGFloat = 0
-    var tamañoFontDiaDeLaSemana : CGFloat = 0
-    var tamañoFontMes : CGFloat = 0
+    var altoHeader : CGFloat = 0
+    var altoFontDia : CGFloat = 0
+    var altoFontMes : CGFloat = 0
+    var altoFontAño : CGFloat = 0
     
     var listaViews = [PCDiaCustomView]()
     var monthTitle = UILabel()
     var yearTitle = UILabel()
+    var cuerpo = UIView()
     
     var viewModel : PCMensualViewModelContract!
     
@@ -107,6 +115,8 @@ class PCMensualCustomView: UIView, PCMensualViewContract {
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeRightHandle))
         swipeRight.direction = .right
         addGestureRecognizer(swipeRight)
+        
+        self.layer.masksToBounds = true
     }
     
     @objc func swipeLeftHandle() {
@@ -116,6 +126,9 @@ class PCMensualCustomView: UIView, PCMensualViewContract {
         viewModel.retrocederMes()
     }
     
+    func setMonthTitle() {
+        monthTitle.text = viewModel.getMonthName()
+    }
    
     func deselectAll() {
         for view in listaViews {
@@ -155,10 +168,109 @@ class PCMensualCustomView: UIView, PCMensualViewContract {
         })
 
     }
-    
    
+    func hideYear(completion: @escaping () -> Void) {
+        if Int(self.yearTitle.text!) != self.viewModel.getYear() {
+             self.yearTitle.fadeOut {
+                completion()
+            }
+        }
+    }
+    
+    func showYear(completion: @escaping () -> Void) {
+        self.yearTitle.alpha = 1
+        
+        self.yearTitle.zoomIn(duration: 0.5, completed: {
+            completion()
+        })
+    }
+    
+    func setYearTitle() {
+        self.yearTitle.text = String(self.viewModel.getYear())
+    }
+    
+    
+    
+    func hideMesIzquierda(completion: @escaping () -> Void) {
+        let from = monthTitle.frame.origin.x
+        let to = from - monthTitle.layer.frame.size.width - 16
+
+        monthTitle.slide(fromX: from, toX: to, duration: 0.2) {
+             completion()
+        }
+    }
+    
+    func showMesDerecha(completion: @escaping () -> Void) {
+        let from = (self.monthTitle.superview?.frame.width)!
+        let to = monthTitle.frame.origin.x
+    
+        monthTitle.slide(fromX: from, toX: to, duration: 0.2) {
+             completion()
+        }
+    }
+    
+    func hideMesDerecha(completion: @escaping () -> Void) {
+        let from = monthTitle.frame.origin.x
+        let to = (self.monthTitle.superview?.frame.width)!
+        
+        monthTitle.slide(fromX: from, toX: to, duration: 0.2) {
+             completion()
+        }
+
+    }
+    
+    func showMesIzquierda(completion: @escaping () -> Void) {
+        let from = -self.monthTitle.ancho - 16
+        let to = monthTitle.frame.origin.x
+        
+        monthTitle.slide(fromX: from, toX: to, duration: 0.2) {
+            completion()
+        }
+        
+    }
+    
+    func hideCuerpoIzquierda(completion: @escaping () -> Void) {
+        let from = cuerpo.frame.origin.x
+        let to = from - cuerpo.layer.frame.size.width
+        
+        cuerpo.slide(fromX: from, toX: to, duration: 0.2) {
+            completion()
+        }
+
+    }
+    
+    func showCuerpoDerecha(completion: @escaping () -> Void) {
+        let from = self.cuerpo.frame.width
+        let to : CGFloat = 0
+        
+        cuerpo.slide(fromX: from, toX: to, duration: 0.2) {
+            completion()
+        }
+
+    }
+    
+    func hideCuerpoDerecha(completion: @escaping () -> Void) {
+        let from = cuerpo.frame.origin.x
+        let to = self.cuerpo.frame.width
+        
+        cuerpo.slide(fromX: from, toX: to, duration: 0.2) {
+            completion()
+        }
+
+    }
+    
+    func showCuerpoIzquierda(completion: @escaping () -> Void) {
+        let from = -self.cuerpo.frame.width
+        let to : CGFloat = 0
+        
+        cuerpo.slide(fromX: from, toX: to, duration: 0.2) {
+            completion()
+        }
+
+    }
     
     func updateDays() {
+        
         
         for fila in 0...5 {
             for columna in 0...6 {
@@ -170,16 +282,10 @@ class PCMensualCustomView: UIView, PCMensualViewContract {
             }
         }
       
-  
-        let posicionOriginal = monthTitle.frame.origin.x
-        let posicionFinal = posicionOriginal - monthTitle.layer.frame.size.width - 16
-        
-        monthTitle.slide(fromX: posicionOriginal, toX: posicionFinal) {
-            self.monthTitle.text = self.viewModel.getMonthName() + " 2019"
-            self.monthTitle.slide(fromX: (self.monthTitle.superview?.frame.width)!, toX: posicionOriginal)
-        }
         
     }
+    
+    
     
     func getDayAttibutes(fecha: Date, fila: Int, columna: Int) -> PCMensualDayAttribute {
         let i = columna + (fila*7)
@@ -213,12 +319,12 @@ class PCMensualCustomView: UIView, PCMensualViewContract {
         } else if x <= 0 {
             atributos.antActSig = 1
             x = x + diasMaximoMesAnteriorEnPantalla!
-            atributos.labelCentralFont = UIFont.systemFont(ofSize: frame.height/20 * 0.3)
+            atributos.labelCentralFont = UIFont.systemFont(ofSize: frame.height/20 * 0.8)
             
         } else {
             atributos.antActSig = -1
             x = x - diasMaximoMesActualEnPantalla
-            atributos.labelCentralFont = UIFont.systemFont(ofSize: frame.height/20 * 0.3)
+            atributos.labelCentralFont = UIFont.systemFont(ofSize: frame.height/20 * 0.8)
             
         }
         
@@ -282,4 +388,11 @@ extension PCMensualCustomView {
            // print(currentPoint)
         }
     }*/
+}
+
+
+
+//HEADER
+extension PCMensualCustomView {
+    
 }
