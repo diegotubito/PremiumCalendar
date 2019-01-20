@@ -9,6 +9,13 @@
 import UIKit
 
 class PCMensualViewModel: NSObject, PCMensualViewModelContract {
+    func getMonthName() -> String {
+        let mes = Calendar.current.component(.month, from: model.viewDate)
+        
+        return MESES[mes]!
+    }
+    
+  
     
     
   
@@ -81,18 +88,16 @@ class PCMensualViewModel: NSObject, PCMensualViewModelContract {
     
     func avanzarMes() {
         model.viewDate.sumarMes(valor: 1)
-        print(model.viewDate)
         _view.updateDays()
     }
     
     func retrocederMes() {
         model.viewDate.sumarMes(valor: -1)
-        print(model.viewDate)
-        
         _view.updateDays()
         
     }
     
+   
     
 }
 
@@ -124,5 +129,7 @@ extension Date {
         let days = myCalendar.dateComponents([.day], from: interval.start, to: interval.end).day!
         return days
     }
+    
+    
     
 }

@@ -13,6 +13,7 @@ protocol PCMensualViewModelContract {
     func selectedView(_ tuple : (Int, Int))
     var model : PCMensualModel {get set}
     func getNameDay(index: Int) -> String
+    func getMonthName() -> String
 
     
     func avanzarMes()

@@ -14,8 +14,11 @@ class PCMensualCustomView: UIView, PCMensualViewContract {
     var factorDimension : CGFloat = 1.0
     var tamañoHeader : CGFloat = 0
     var tamañoFontDiaDeLaSemana : CGFloat = 0
+    var tamañoFontMes : CGFloat = 0
     
     var listaViews = [PCDiaCustomView]()
+    var monthTitle = UILabel()
+    var yearTitle = UILabel()
     
     var viewModel : PCMensualViewModelContract!
     
@@ -166,7 +169,16 @@ class PCMensualCustomView: UIView, PCMensualViewContract {
                 listaViews[i].fuenteLabelCentral = atributos.labelCentralFont
             }
         }
-       
+      
+  
+        let posicionOriginal = monthTitle.frame.origin.x
+        let posicionFinal = posicionOriginal - monthTitle.layer.frame.size.width - 16
+        
+        monthTitle.slide(fromX: posicionOriginal, toX: posicionFinal) {
+            self.monthTitle.text = self.viewModel.getMonthName() + " 2019"
+            self.monthTitle.slide(fromX: (self.monthTitle.superview?.frame.width)!, toX: posicionOriginal)
+        }
+        
     }
     
     func getDayAttibutes(fecha: Date, fila: Int, columna: Int) -> PCMensualDayAttribute {

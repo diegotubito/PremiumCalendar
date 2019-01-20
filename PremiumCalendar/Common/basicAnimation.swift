@@ -187,6 +187,46 @@ extension UIView {
             })
         })
     }
+    
+    
+    func slide(fromX: CGFloat?, toX: CGFloat) {
+          
+        let yPosition = self.frame.origin.y
+        
+        let height = self.frame.height
+        let width = self.layer.frame.size.width
+     
+        
+        if fromX != nil {
+            self.frame = CGRect(x: fromX!, y: yPosition, width: width, height: height)
+        }
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: [.curveEaseInOut], animations: {
+            self.frame = CGRect(x: toX, y: yPosition, width: width, height: height)
+            
+        })
+    }
+    
+    func slide(fromX: CGFloat?, toX: CGFloat, completion: @escaping () -> Void) {
+        
+        let yPosition = self.frame.origin.y
+        
+        let height = self.frame.height
+        let width = self.layer.frame.size.width
+     
+        if fromX != nil {
+            self.frame = CGRect(x: fromX!, y: yPosition, width: width, height: height)
+        }
+
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: [.curveEaseInOut], animations: {
+            self.frame = CGRect(x: toX, y: yPosition, width: width, height: height)
+            
+        }) { (termino) in
+            completion()
+        }
+    }
+    
+    
+    
 }
 
 
