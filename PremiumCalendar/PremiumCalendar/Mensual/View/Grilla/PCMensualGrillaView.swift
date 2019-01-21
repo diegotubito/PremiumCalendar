@@ -12,8 +12,8 @@ extension PCMensualCustomView {
     func dibujarGrilla() {
         altoHeader = (frame.height / 1.5) * factorDimension
         altoFontDia = frame.height/12 * factorDimension
-        altoFontMes = altoHeader/2.3
-        altoFontAño = altoHeader/5
+        altoFontMes = altoHeader/2.7
+        altoFontAño = altoHeader/3
         
         for i in self.subviews {
             i.removeFromSuperview()
@@ -72,7 +72,7 @@ extension PCMensualCustomView {
     
     func addYearView(stackGrilla: UIStackView) {
         let year = UIView(frame: CGRect.zero)
-        year.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
+        year.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
         
         year.layer.cornerRadius = altoHeader/10
         year.layer.masksToBounds = true
@@ -86,8 +86,8 @@ extension PCMensualCustomView {
         stackGrilla.addConstraints([y1, y2, y3, y4])
         
         yearTitle.text = String(viewModel.getYear())
-        yearTitle.textColor = UIColor.lightGray
-        yearTitle.font = UIFont.systemFont(ofSize: altoFontAño)
+        yearTitle.textColor = COLOR_TEXTO_AÑO
+        yearTitle.font = UIFont(name: FONT_NAME_TEXTO_AÑO, size: altoFontAño)!
         year.addSubview(yearTitle)
         
         yearTitle.translatesAutoresizingMaskIntoConstraints = false
@@ -103,8 +103,9 @@ extension PCMensualCustomView {
         rectangulo.backgroundColor = UIColor.black
   
         monthTitle.text = viewModel.getMonthName()
-        monthTitle.textColor = UIColor.lightGray
-        monthTitle.font = UIFont.systemFont(ofSize: altoFontMes)
+        monthTitle.textColor = COLOR_TEXTO_MES
+        monthTitle.font = UIFont(name: FONT_NAME_TEXTO_MES, size: altoFontMes)!
+        
         rectangulo.addSubview(monthTitle)
         
         monthTitle.translatesAutoresizingMaskIntoConstraints = false
@@ -141,7 +142,7 @@ extension PCMensualCustomView {
     func dibujarDiasDeLaSemana() -> UIView {
         
         let rectangulo = UIView(frame: CGRect.zero)
-        rectangulo.backgroundColor = UIColor.gray
+        rectangulo.backgroundColor = UIColor.darkGray
         
         let containerStack = UIStackView()
         containerStack.alignment = .fill
@@ -199,19 +200,15 @@ extension PCMensualCustomView {
         
         for index in 0...6 {
             let nuevaView = PCDiaCustomView(frame: CGRect())
-            let atributos = getDayAttibutes(fecha: viewModel.model.viewDate, fila: fila, columna: index)
-            nuevaView.textoLabelCentral = String(atributos.numberDay)
             
             nuevaView.columna = index
             nuevaView.fila = fila
-            nuevaView.colorLabelCentral = atributos.labelCentralColor
-            nuevaView.fuenteLabelCentral = atributos.labelCentralFont
             nuevaView.bordeAncho = bordeAncho
             nuevaView.bordeColor = bordeColor
             nuevaView.fondoDia = fondoDia
             nuevaView.radio = radio
             nuevaView.delegate = self
-      
+
             
             listaViews.append(nuevaView)
             viewsFila.append(nuevaView)

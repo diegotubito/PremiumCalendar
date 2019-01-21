@@ -10,13 +10,14 @@ import UIKit
 
 protocol PCMensualViewModelContract {
     init(withCustomView view: PCMensualViewContract)
-    func selectedView(_ tuple : (Int, Int))
+    func selectedView(_ view: PCDiaCustomView)
+    func finishedWithSelection()
     var model : PCMensualModel {get set}
     func getNameDay(index: Int) -> String
     func getMonth() -> Int
     func getMonthName() -> String
     func getYear() -> Int
- 
+    
     
     func avanzarMes()
     func retrocederMes()
@@ -27,8 +28,10 @@ protocol PCMensualViewContract {
     func deselectAll()
     func updateDays()
     func getDayAttibutes(fecha: Date, fila: Int, columna: Int) -> PCMensualDayAttribute
-
+    func pintarSelectedDate(view: PCDiaCustomView)
     func showSelectedItems()
+    func highlightBorderForFinishedSelection()
+    func dimmBorderForUnfinishedSelection()
     
     func hideMesIzquierda(completion: @escaping () -> Void)
     func showMesDerecha(completion: @escaping () -> Void)

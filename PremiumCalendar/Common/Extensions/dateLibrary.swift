@@ -51,7 +51,20 @@ extension Date {
         return days
     }
     
+    var mes : Int {
+        let calendar = Calendar.current
+        let mes = calendar.component(.month, from: self)
+        
+        return mes
+    }
     
+    var año : Int {
+        let calendar = Calendar.current
+        let mes = calendar.component(.year, from: self)
+        
+        return mes
+    }
+
     
 }
 

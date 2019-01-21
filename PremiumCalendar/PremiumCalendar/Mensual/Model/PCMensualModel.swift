@@ -45,12 +45,12 @@ struct PCMensualSelectionMode {
     static let dragSelection = 3
 }
 
+
 class PCMensualModel {
     var selectionMode : Int!
-    var selectedItems : [Int]!
     var firstDay : PCMensualDias!
     var selectedDate : Date!
-    var selectedDates : [Int : String] = [:]
+    var selectedDates : [String] = []
     
     var viewDate : Date!
 
@@ -62,7 +62,6 @@ class PCMensualModel {
     
     init(selectionMode: Int, selectedItems: [Int]) {
         self.selectionMode = selectionMode
-        self.selectedItems = selectedItems
         self.firstDay = .domingo
         self.selectedDate = Date()
         self.viewDate = Date()
@@ -98,7 +97,9 @@ class PCMensualDayAttribute {
     var labelCentralColor : UIColor = UIColor()
     var isSelected : Bool = false
     var isDotted : Bool = false
-    var numberDay : Int = 0
+    var dia : Int = 0
+    var año : Int = 0
+    var mes : Int = 0
     var antActSig = 0
 }
 

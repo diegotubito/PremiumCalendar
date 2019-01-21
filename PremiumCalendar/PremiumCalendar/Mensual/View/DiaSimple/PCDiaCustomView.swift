@@ -19,15 +19,20 @@ protocol PCDiaCustomViewDelegate {
 
 class PCDiaCustomView: UIView {
     
-       var fila : Int!
+    var fila : Int!
     var columna : Int!
     var labelCentral : UILabel!
-    var colorLabelCentral = UIColor.white
-    var fuenteLabelCentral: UIFont = UIFont.systemFont(ofSize: 12)
+   // var colorLabelCentral = UIColor.white
+   // var fuenteLabelCentral: UIFont = UIFont.systemFont(ofSize: 12)
     var fondoSeleccion : UIImageView!
     var textoLabelCentral : String!
+    var fechaString : String = ""
+    var atributos : PCMensualDayAttribute!
     
     var delegate : PCDiaCustomViewDelegate?
+    
+    
+  
       
     var radio: CGFloat = 0 {
         didSet {
@@ -123,8 +128,6 @@ class PCDiaCustomView: UIView {
         labelCentral = UILabel()
         labelCentral.text = textoLabelCentral
         labelCentral.textAlignment = .center
-        labelCentral.textColor = colorLabelCentral
-        labelCentral.font = fuenteLabelCentral
         self.addSubview(labelCentral)
         
         labelCentral.translatesAutoresizingMaskIntoConstraints = false

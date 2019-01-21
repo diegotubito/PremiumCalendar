@@ -10,12 +10,32 @@ import UIKit
 
 @IBDesignable
 class PCMensualCustomView: UIView, PCMensualViewContract {
-   
+    func highlightBorderForFinishedSelection() {
+        self.layer.borderColor = UIColor.red.cgColor
+    }
+    func dimmBorderForUnfinishedSelection() {
+        self.layer.borderColor = UIColor.lightGray.cgColor
+    }
+    func pintarSelectedDate(view: PCDiaCustomView) {
+        view.backgroundColor = COLOR_FONDO_SELECCION
+    }
+    
+    func deselectAll() {
+        for view in listaViews {
+            view.backgroundColor = UIColor.clear
+        }
+    }
     
    
     
-   
-   
+    var COLOR_FONDO_SELECCION = UIColor.cyan.withAlphaComponent(0.4)
+    var COLOR_TEXTO_AÑO = UIColor.black
+    var COLOR_TEXTO_MES = UIColor.lightGray
+    var FONT_NAME_TEXTO_AÑO = "Verdana-Bold"
+    var FONT_NAME_TEXTO_MES = "Verdana"
+    var DURACION_ANIMACION_SLIDE_CUERPO : Double = 0.25
+    var DURACION_ANIMACION_SLIDE_HEADER : Double = 0.5
+    
        
     var factorDimension : CGFloat = 1.0
     var altoHeader : CGFloat = 0
@@ -117,6 +137,8 @@ class PCMensualCustomView: UIView, PCMensualViewContract {
         addGestureRecognizer(swipeRight)
         
         self.layer.masksToBounds = true
+        
+        viewModel.retrocederMes()
     }
     
     @objc func swipeLeftHandle() {
@@ -130,31 +152,50 @@ class PCMensualCustomView: UIView, PCMensualViewContract {
         monthTitle.text = viewModel.getMonthName()
     }
    
-    func deselectAll() {
-        for view in listaViews {
-            view.fondoSeleccion.backgroundColor = UIColor.clear
-        }
-    }
+   
     
     func showSelectedItems() {
         deselectAll()
-        
-        for index in viewModel.model.selectedItems {
-            let view = listaViews[index]
-            view.fondoSeleccion.backgroundColor = UIColor.red
+     
+        if viewModel.model.selectionMode == PCMensualSelectionMode.doubleSelection && viewModel.model.selectedDates.count == 2 {
+            let str1 = viewModel.model.selectedDates[0]
+            let str2 = viewModel.model.selectedDates[1]
+            let date1 = str1.toDate(formato: "dd-MM-yyyy")!
+            let date2 = str2.toDate(formato: "dd-MM-yyyy")!
             
-            animarSegunModo(view: view)
-                
+            var dateMayor = date1
+            var dateMenor = date2
+            if date2 > date1 {
+                dateMayor = date2
+                dateMenor = date1
+            }
+            for i in listaViews {
+                let fecha = i.fechaString.toDate(formato: "dd-MM-yyyy")!
+                if fecha >= dateMenor && fecha <= dateMayor {
+                      pintarSelectedDate(view: i)
+                }
+            }
+            
+            
         }
         
+        for i in listaViews {
+            if viewModel.model.selectedDates.contains(i.fechaString) {
+                pintarSelectedDate(view: i)
+            }
+        }
+        
+        
+      
     }
     
     func animarSegunModo(view: PCDiaCustomView) {
       
-        view.buttonAnimation()
+       /* view.buttonAnimation()
         if viewModel.model.selectionMode == PCMensualSelectionMode.doubleSelection && viewModel.model.selectedItems.count >= 2 {
             animarViewModeDoubleSelection(view: view)
         }
+ */
         
     }
     
@@ -195,7 +236,7 @@ class PCMensualCustomView: UIView, PCMensualViewContract {
         let from = monthTitle.frame.origin.x
         let to = from - monthTitle.layer.frame.size.width - 16
 
-        monthTitle.slide(fromX: from, toX: to, duration: 0.2) {
+        monthTitle.slide(fromX: from, toX: to, duration: DURACION_ANIMACION_SLIDE_HEADER) {
              completion()
         }
     }
@@ -204,7 +245,7 @@ class PCMensualCustomView: UIView, PCMensualViewContract {
         let from = (self.monthTitle.superview?.frame.width)!
         let to = monthTitle.frame.origin.x
     
-        monthTitle.slide(fromX: from, toX: to, duration: 0.2) {
+        monthTitle.slide(fromX: from, toX: to, duration: DURACION_ANIMACION_SLIDE_HEADER) {
              completion()
         }
     }
@@ -213,7 +254,7 @@ class PCMensualCustomView: UIView, PCMensualViewContract {
         let from = monthTitle.frame.origin.x
         let to = (self.monthTitle.superview?.frame.width)!
         
-        monthTitle.slide(fromX: from, toX: to, duration: 0.2) {
+        monthTitle.slide(fromX: from, toX: to, duration: DURACION_ANIMACION_SLIDE_HEADER) {
              completion()
         }
 
@@ -223,7 +264,7 @@ class PCMensualCustomView: UIView, PCMensualViewContract {
         let from = -self.monthTitle.ancho - 16
         let to = monthTitle.frame.origin.x
         
-        monthTitle.slide(fromX: from, toX: to, duration: 0.2) {
+        monthTitle.slide(fromX: from, toX: to, duration: DURACION_ANIMACION_SLIDE_HEADER) {
             completion()
         }
         
@@ -233,7 +274,7 @@ class PCMensualCustomView: UIView, PCMensualViewContract {
         let from = cuerpo.frame.origin.x
         let to = from - cuerpo.layer.frame.size.width
         
-        cuerpo.slide(fromX: from, toX: to, duration: 0.2) {
+        cuerpo.slide(fromX: from, toX: to, duration: DURACION_ANIMACION_SLIDE_CUERPO) {
             completion()
         }
 
@@ -243,7 +284,7 @@ class PCMensualCustomView: UIView, PCMensualViewContract {
         let from = self.cuerpo.frame.width
         let to : CGFloat = 0
         
-        cuerpo.slide(fromX: from, toX: to, duration: 0.2) {
+        cuerpo.slide(fromX: from, toX: to, duration: DURACION_ANIMACION_SLIDE_CUERPO) {
             completion()
         }
 
@@ -253,7 +294,7 @@ class PCMensualCustomView: UIView, PCMensualViewContract {
         let from = cuerpo.frame.origin.x
         let to = self.cuerpo.frame.width
         
-        cuerpo.slide(fromX: from, toX: to, duration: 0.2) {
+        cuerpo.slide(fromX: from, toX: to, duration: DURACION_ANIMACION_SLIDE_CUERPO) {
             completion()
         }
 
@@ -263,7 +304,7 @@ class PCMensualCustomView: UIView, PCMensualViewContract {
         let from = -self.cuerpo.frame.width
         let to : CGFloat = 0
         
-        cuerpo.slide(fromX: from, toX: to, duration: 0.2) {
+        cuerpo.slide(fromX: from, toX: to, duration: DURACION_ANIMACION_SLIDE_CUERPO) {
             completion()
         }
 
@@ -271,14 +312,30 @@ class PCMensualCustomView: UIView, PCMensualViewContract {
     
     func updateDays() {
         
+        self.deselectAll()
         
         for fila in 0...5 {
             for columna in 0...6 {
                 let atributos = getDayAttibutes(fecha: viewModel.model.viewDate, fila: fila, columna: columna)
                 let i = columna + (fila * 7)
-                listaViews[i].labelCentral.text = String(atributos.numberDay)
-                listaViews[i].colorLabelCentral = atributos.labelCentralColor
-                listaViews[i].fuenteLabelCentral = atributos.labelCentralFont
+                listaViews[i].labelCentral.text = String(atributos.dia)
+                listaViews[i].labelCentral.textColor = atributos.labelCentralColor
+                listaViews[i].labelCentral.font = atributos.labelCentralFont
+                
+                let fecha = listaViews[i].fechaString
+                if viewModel.model.selectedDates.contains(fecha) {
+                    pintarSelectedDate(view: listaViews[i])
+       
+                }
+                
+                self.showSelectedItems()
+                
+                let aux = String(atributos.dia) + "-" + String(atributos.mes) + "-" + String(atributos.año)
+                let auxDate = aux.toDate(formato: "dd-MM-yyyy")
+                let finalStr = (auxDate?.toString(formato: "dd-MM-yyyy"))!
+                
+                listaViews[i].fechaString = finalStr
+                
             }
         }
       
@@ -292,6 +349,7 @@ class PCMensualCustomView: UIView, PCMensualViewContract {
         let diaInicial = queDiaEmpiezaElMes(fecha: fecha)
         
         let mesAnterior = Calendar.current.date(byAdding: .month, value: -1, to: fecha)
+        let mesSiguiente = Calendar.current.date(byAdding: .month, value: 1, to: fecha)
         
         let diasMaximoMesAnteriorEnPantalla = mesAnterior?.endDay()
         let diasMaximoMesActualEnPantalla = fecha.endDay()
@@ -314,23 +372,30 @@ class PCMensualCustomView: UIView, PCMensualViewContract {
         if x > 0 && x <= diasMaximoMesActualEnPantalla {
             atributos.antActSig = 0
             atributos.labelCentralFont = UIFont.systemFont(ofSize: frame.height/20)
-            
+            atributos.mes = fecha.mes
+            atributos.año = fecha.año
             
         } else if x <= 0 {
             atributos.antActSig = 1
             x = x + diasMaximoMesAnteriorEnPantalla!
             atributos.labelCentralFont = UIFont.systemFont(ofSize: frame.height/20 * 0.8)
             
+            atributos.mes = mesAnterior!.mes
+            atributos.año = mesAnterior!.año
+            
         } else {
             atributos.antActSig = -1
             x = x - diasMaximoMesActualEnPantalla
             atributos.labelCentralFont = UIFont.systemFont(ofSize: frame.height/20 * 0.8)
             
+            atributos.mes = (mesSiguiente?.mes)!
+            atributos.año = (mesSiguiente?.año)!
+            
         }
         
         
         atributos.labelCentralColor = getLabelColor(atributos)
-        atributos.numberDay = x
+        atributos.dia = x
         
         
         return atributos
@@ -355,8 +420,8 @@ class PCMensualCustomView: UIView, PCMensualViewContract {
 
 extension PCMensualCustomView: PCDiaCustomViewDelegate {
     func didTouched(fila: Int, columna: Int) {
-        
-        viewModel.selectedView((fila, columna))
+        let index = columna + (fila * 7)
+        viewModel.selectedView(listaViews[index])
     }
   
 }

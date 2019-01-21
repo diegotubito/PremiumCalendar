@@ -9,11 +9,36 @@
 import UIKit
 
 class PCMensualViewModel: NSObject, PCMensualViewModelContract {
+    func finishedWithSelection() {
+        _view.highlightBorderForFinishedSelection()
+    }
+    
+    
+  
+      
+    var model: PCMensualModel
+    var _view : PCMensualViewContract!
+    
+    required init(withCustomView view: PCMensualViewContract) {
+        _view = view
+        
+        let selectedItems : [Int] = []
+        model = PCMensualModel(selectionMode: PCMensualSelectionMode.singleSelection, selectedItems: selectedItems)
+    
+        model.construirNombreDias()
+        
+    
+  
+    }
+    
+    func getNameDay(index: Int) -> String {
+        return model.nombreDiasConstruidos[index]
+    }
     func getYear() -> Int {
         let año = Calendar.current.component(.year, from: model.viewDate)
         
         return año
-
+        
     }
     
     
@@ -27,77 +52,47 @@ class PCMensualViewModel: NSObject, PCMensualViewModelContract {
         return MESES[mes]!
     }
     
-  
     
-    
-  
-     
-    var model: PCMensualModel
-    var _view : PCMensualViewContract!
-    
-    required init(withCustomView view: PCMensualViewContract) {
-        _view = view
-        
-        let selectedItems : [Int] = []
-        model = PCMensualModel(selectionMode: PCMensualSelectionMode.doubleSelection, selectedItems: selectedItems)
-    
-        model.construirNombreDias()
-  
-    }
-    
-    func getNameDay(index: Int) -> String {
-        return model.nombreDiasConstruidos[index]
-    }
-    
-    
-    func selectedView(_ tuple: (Int, Int)) {
-        let index = tuple.1 + (tuple.0 * 7)
+    func selectedView(_ view: PCDiaCustomView) {
+        print(view.fechaString)
         
         if model.selectionMode == PCMensualSelectionMode.singleSelection {
-            model.selectedItems.removeAll()
-            model.selectedItems.append(index)
+            model.selectedDates.removeAll()
+            model.selectedDates.append(view.fechaString)
+         _view.highlightBorderForFinishedSelection()
+            
         } else if model.selectionMode == PCMensualSelectionMode.randomSelection {
-            if let index = model.selectedItems.firstIndex(where: {$0 == index}) {
-                model.selectedItems.remove(at: index)
+            if let index = model.selectedDates.firstIndex(where: {$0 == view.fechaString}) {
+                model.selectedDates.remove(at: index)
+                _view.dimmBorderForUnfinishedSelection()
             } else {
-                model.selectedItems.append(index)
+                _view.highlightBorderForFinishedSelection()
+                model.selectedDates.append(view.fechaString)
             }
+ 
         } else if model.selectionMode == PCMensualSelectionMode.doubleSelection {
-            if model.selectedItems.count > 2 {
-                model.selectedItems.removeAll()
-                model.selectedItems.append(index)
-            } else if model.selectedItems.count == 1 {
-                model.selectedItems.append(index)
-                selectInBetween()
-
+            if model.selectedDates.count > 1 {
+                model.selectedDates.removeAll()
+                model.selectedDates.append(view.fechaString)
+                _view.dimmBorderForUnfinishedSelection()
+            } else if model.selectedDates.count == 1 {
+                _view.highlightBorderForFinishedSelection()
+                model.selectedDates.append(view.fechaString)
              } else {
-                model.selectedItems.append(index)
+                model.selectedDates.append(view.fechaString)
+                _view.dimmBorderForUnfinishedSelection()
             }
+ 
             
         } else if model.selectionMode == PCMensualSelectionMode.doubleSelection {
             
         }
+        
          _view.showSelectedItems()
         
      }
     
-    func selectInBetween() {
-        let indexA = model.selectedItems[0]
-        let indexB = model.selectedItems[1]
-        
-        var menor = indexB
-        var mayor = indexA
-        if indexA < indexB {
-            menor = indexA
-            mayor = indexB
-        }
-        for x in 0...42 {
-            if x >= menor && x <= mayor {
-                model.selectedItems.append(x)
-            }
-        }
-    }
-    
+   
     func avanzarMes() {
         model.viewDate.sumarMes(valor: 1)
         
@@ -112,7 +107,7 @@ class PCMensualViewModel: NSObject, PCMensualViewModelContract {
         }
         
         _view.hideCuerpoIzquierda {
-            self._view.updateDays()
+             self._view.updateDays()
             self._view.showCuerpoDerecha {
                 
             }
@@ -140,6 +135,7 @@ class PCMensualViewModel: NSObject, PCMensualViewModelContract {
         }
         
     }
+    
     
    
     
